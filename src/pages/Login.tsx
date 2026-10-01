@@ -162,7 +162,7 @@ export const Login = () => {
     <Container>
       <Wrapper>
         <Card>
-          <LogoMark>C</LogoMark>
+          <LogoMark>A</LogoMark>
           <Title>Welcome Back</Title>
           <Subtitle>Sign in to your account</Subtitle>
           <Form onSubmit={handleSubmit}>

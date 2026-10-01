@@ -104,14 +104,14 @@ export const Footer = () => (
   <FooterWrapper>
     <FooterContent>
       <FooterBrand>
-        Chella<span>.blog</span>
+        Anony<span>.blog</span>
       </FooterBrand>
       <FooterDesc>
         Sharing thoughts on software engineering, clean code, and modern web development.
       </FooterDesc>
       <SocialLinks>
         <IconLink
-          href="https://github.com/chella23"
+          href="https://github.com/anony"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub"
@@ -119,7 +119,7 @@ export const Footer = () => (
           <FiGithub />
         </IconLink>
         <IconLink
-          href="https://linkedin.com/in/chella23"
+          href="https://linkedin.com/in/anony"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="LinkedIn"
@@ -127,7 +127,7 @@ export const Footer = () => (
           <FiLinkedin />
         </IconLink>
         <IconLink
-          href="https://twitter.com/chella23"
+          href="https://twitter.com/anony"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Twitter"
@@ -135,7 +135,7 @@ export const Footer = () => (
           <FiTwitter />
         </IconLink>
         <IconLink
-          href="mailto:chella@example.com"
+          href="mailto:anony@example.com"
           aria-label="Email"
         >
           <FiMail />
@@ -143,7 +143,7 @@ export const Footer = () => (
       </SocialLinks>
       <Divider />
       <CopyText>
-        &copy; {new Date().getFullYear()} Chella.blog — Made with{" "}
+        &copy; {new Date().getFullYear()} Anony.blog — Made with{" "}
         <FiHeart size={13} /> in India
       </CopyText>
     </FooterContent>

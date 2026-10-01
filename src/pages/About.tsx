@@ -208,10 +208,10 @@ export const About = () => (
     <PageWrapper>
       <Hero>
         <AvatarWrapper>
-          <Avatar>C</Avatar>
+          <Avatar>A</Avatar>
           <StatusDot />
         </AvatarWrapper>
-        <Name>Chellappan G</Name>
+        <Name>Anony</Name>
         <RoleBadges>
           <RoleBadge $variant="green">&lt;&gt; Full Stack Developer</RoleBadge>
           <RoleBadge $variant="purple">&gt; Cybersecurity Enthusiast</RoleBadge>
@@ -226,7 +226,7 @@ export const About = () => (
         </Location>
         <SocialRow>
           <SocialLink
-            href="https://github.com/chella23"
+            href="https://github.com/anony"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
@@ -234,7 +234,7 @@ export const About = () => (
             <FiGithub />
           </SocialLink>
           <SocialLink
-            href="https://linkedin.com/in/chella23"
+            href="https://linkedin.com/in/anony"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
@@ -242,7 +242,7 @@ export const About = () => (
             <FiLinkedin />
           </SocialLink>
           <SocialLink
-            href="https://twitter.com/chella23"
+            href="https://twitter.com/anony"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Twitter"
@@ -250,7 +250,7 @@ export const About = () => (
             <FiTwitter />
           </SocialLink>
           <SocialLink
-            href="mailto:chella@example.com"
+            href="mailto:anony@example.com"
             aria-label="Email"
           >
             <FiMail />

@@ -164,7 +164,7 @@ export const Register = () => {
     <Container>
       <Wrapper>
         <Card>
-          <LogoMark>C</LogoMark>
+          <LogoMark>A</LogoMark>
           <Title>Create Account</Title>
           <Subtitle>Join the community</Subtitle>
           <Form onSubmit={handleSubmit}>

@@ -1,9 +1,9 @@
 import styled, { keyframes } from "styled-components";
+import { useMemo } from "react";
 import ReactMarkdown from "react-markdown";
 import { Post } from "../../hooks/usePosts";
 import { formatDate } from "../../utils/formatDate";
 import { FiClock, FiCalendar, FiUser, FiShare2 } from "react-icons/fi";
-import { Container } from "../layout/Container";
 
 const fadeUp = keyframes`
   from { opacity: 0; transform: translateY(20px); }
@@ -27,13 +27,150 @@ const HeroBanner = styled.div<{ $src?: string }>`
   }
 `;
 
-const Article = styled.article`
-  max-width: 780px;
+const LayoutGrid = styled.div`
+  display: grid;
+  grid-template-columns: 240px 1fr 240px;
+  gap: 2rem;
+  max-width: 1280px;
   margin: -3rem auto 0;
-  padding: 0 1.5rem 2rem;
   position: relative;
   z-index: 1;
+  padding: 0 1.5rem 2rem;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr 240px;
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    margin-top: -1.5rem;
+  }
+`;
+
+const SidebarLeft = styled.aside`
+  position: sticky;
+  top: 6rem;
+  height: max-content;
+  max-height: calc(100vh - 8rem);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.colors.border};
+    border-radius: 4px;
+  }
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
+`;
+
+const SidebarRight = styled.aside`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: sticky;
+  top: 6rem;
+  height: max-content;
+  max-height: calc(100vh - 8rem);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  padding-right: 0.5rem;
+  
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.colors.border};
+    border-radius: 4px;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const Article = styled.article`
+  background: ${({ theme }) => theme.colors.background};
+  border-radius: 18px;
+  padding: 2.5rem;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  box-shadow: ${({ theme }) => theme.shadows.elevation};
   animation: ${fadeUp} 0.6s ease-out;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+`;
+
+const StickyWidget = styled.div`
+  background: ${({ theme }) => theme.colors.surface};
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  border-radius: 18px;
+  padding: 1.5rem;
+  box-shadow: ${({ theme }) => theme.shadows.glass};
+`;
+
+const Widget = styled.div`
+  background: ${({ theme }) => theme.colors.surface};
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  border-radius: 18px;
+  padding: 1.5rem;
+  box-shadow: ${({ theme }) => theme.shadows.glass};
+`;
+
+const WidgetTitle = styled.h3`
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: ${({ theme }) => theme.colors.text};
+  font-family: "JetBrains Mono", monospace;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+const TOCList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+`;
+
+const TOCItem = styled.li`
+  font-size: 0.85rem;
+  color: ${({ theme }) => theme.colors.muted};
+  cursor: pointer;
+  transition: color 0.2s;
+  &:hover {
+    color: ${({ theme }) => theme.colors.primary};
+  }
+`;
+
+const AuthorInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
+
+const AuthorName = styled.div`
+  font-weight: 600;
+  color: ${({ theme }) => theme.colors.text};
+`;
+
+const AuthorBio = styled.div`
+  font-size: 0.85rem;
+  color: ${({ theme }) => theme.colors.muted};
+  line-height: 1.5;
 `;
 
 const Category = styled.span`
@@ -80,9 +217,10 @@ const MetaItem = styled.span`
 const ShareBtn = styled.button`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  margin-left: auto;
-  padding: 0.4rem 1rem;
+  width: 100%;
+  padding: 0.5rem 1rem;
   border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: 50px;
   background: transparent;
@@ -110,12 +248,14 @@ const MarkdownBody = styled.div`
     margin: 2.5rem 0 1rem;
     color: ${({ theme }) => theme.colors.text};
     font-weight: 700;
+    scroll-margin-top: 6rem;
   }
 
   h3 {
     font-size: 1.25rem;
     margin: 2rem 0 0.75rem;
     font-weight: 600;
+    scroll-margin-top: 6rem;
   }
 
   p {
@@ -231,6 +371,22 @@ interface PostDetailProps {
 }
 
 export const PostDetail = ({ post }: PostDetailProps) => {
+  const toc = useMemo(() => {
+    const headings: { id: string; text: string; level: number }[] = [];
+    const regex = /(?:^|\n)(#{2,3})\s+(.*)/g;
+    let match;
+    while ((match = regex.exec(post.content)) !== null) {
+      const level = match[1].length;
+      const text = match[2].trim();
+      const id = text
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)/g, "");
+      headings.push({ id, text, level });
+    }
+    return headings;
+  }, [post.content]);
+
   const handleShare = async () => {
     if (navigator.share) {
       await navigator.share({
@@ -247,15 +403,36 @@ export const PostDetail = ({ post }: PostDetailProps) => {
   return (
     <>
       {post.thumbnail && <HeroBanner $src={post.thumbnail} />}
-      <Container>
+      
+      <LayoutGrid>
+        {/* Left Column: Table of Contents */}
+        <SidebarLeft>
+          <StickyWidget>
+            <WidgetTitle>Table of Contents</WidgetTitle>
+            <TOCList>
+              {toc.length > 0 ? (
+                toc.map((heading, idx) => (
+                  <TOCItem 
+                    key={idx} 
+                    style={{ paddingLeft: heading.level === 3 ? "1rem" : "0" }}
+                  >
+                    <a href={`#${heading.id}`} style={{ color: "inherit", textDecoration: "none" }}>
+                      {heading.text}
+                    </a>
+                  </TOCItem>
+                ))
+              ) : (
+                <TOCItem>No sections found</TOCItem>
+              )}
+            </TOCList>
+          </StickyWidget>
+        </SidebarLeft>
+
+        {/* Middle Column: Article Content */}
         <Article>
           <Category>{post.category}</Category>
           <Title>{post.title}</Title>
           <MetaBar>
-            <MetaItem>
-              <FiUser size={15} />
-              {post.author.name}
-            </MetaItem>
             <MetaItem>
               <FiCalendar size={15} />
               {formatDate(post.publishedAt)}
@@ -264,13 +441,24 @@ export const PostDetail = ({ post }: PostDetailProps) => {
               <FiClock size={15} />
               {post.readTime}
             </MetaItem>
-            <ShareBtn onClick={handleShare}>
-              <FiShare2 size={14} />
-              Share
-            </ShareBtn>
           </MetaBar>
           <MarkdownBody>
-            <ReactMarkdown>{post.content}</ReactMarkdown>
+            <ReactMarkdown
+              components={{
+                h2: ({ children }) => {
+                  const text = String(children);
+                  const id = text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+                  return <h2 id={id}>{children}</h2>;
+                },
+                h3: ({ children }) => {
+                  const text = String(children);
+                  const id = text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+                  return <h3 id={id}>{children}</h3>;
+                },
+              }}
+            >
+              {post.content}
+            </ReactMarkdown>
           </MarkdownBody>
           <TagsRow>
             {post.tags.map((tag) => (
@@ -278,7 +466,30 @@ export const PostDetail = ({ post }: PostDetailProps) => {
             ))}
           </TagsRow>
         </Article>
-      </Container>
+
+        {/* Right Column: Widgets */}
+        <SidebarRight>
+          {/* Author Widget */}
+          <Widget>
+            <WidgetTitle>
+              <FiUser /> Author
+            </WidgetTitle>
+            <AuthorInfo>
+              <AuthorName>{post.author.name}</AuthorName>
+              <AuthorBio>Sharing thoughts on software engineering, clean code, and modern web development.</AuthorBio>
+            </AuthorInfo>
+          </Widget>
+
+          {/* Share Widget */}
+          <Widget>
+            <WidgetTitle>Share</WidgetTitle>
+            <ShareBtn onClick={handleShare}>
+              <FiShare2 size={14} />
+              Share Article
+            </ShareBtn>
+          </Widget>
+        </SidebarRight>
+      </LayoutGrid>
     </>
   );
 };

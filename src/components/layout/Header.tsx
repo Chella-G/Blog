@@ -201,8 +201,8 @@ export const Header = () => {
     <>
       <Nav>
         <Logo to="/">
-          <LogoMark>C</LogoMark>
-          Chella<span className="accent">.blog</span>
+          <LogoMark>A</LogoMark>
+          Anony<span className="accent">.blog</span>
         </Logo>
 
         <NavCenter $isOpen={menuOpen}>

@@ -5,7 +5,7 @@
     "excerpt": "Learn how to set up a modern React project with TypeScript for type-safe development and better developer experience.",
     "content": "## Introduction\n\nReact and TypeScript are a powerful combination for building modern web applications. TypeScript adds static type checking to JavaScript, catching errors at compile time rather than runtime.\n\n## Setting Up\n\nFirst, create a new Vite project with the React TypeScript template:\n\n```bash\nnpm create vite@latest my-app -- --template react-ts\n```\n\n## Why TypeScript?\n\n- **Type Safety**: Catch bugs before they reach production\n- **Better IDE Support**: Autocomplete, refactoring, and inline docs\n- **Self-Documenting**: Types serve as living documentation\n- **Scalability**: Easier to maintain large codebases\n\n## Conclusion\n\nTypeScript is no longer optional for serious React development. Start using it today!",
     "author": {
-      "name": "Chella",
+      "name": "Anony",
       "avatar": ""
     },
     "publishedAt": "2026-09-28T10:00:00Z",
@@ -24,7 +24,7 @@
     "excerpt": "Discover principles and practices that will help you write code that's easy to read, maintain, and extend over time.",
     "content": "## What is Clean Code?\n\nClean code is code that is easy to understand and easy to change. It's not about being clever — it's about being clear.\n\n## Key Principles\n\n### 1. Meaningful Names\nVariables, functions, and classes should reveal their intent.\n\n### 2. Small Functions\nEach function should do one thing and do it well.\n\n### 3. DRY (Don't Repeat Yourself)\nEvery piece of knowledge should have a single, unambiguous representation.\n\n### 4. Comments\nGood code is self-documenting. Use comments only when the code cannot express the intent.\n\n## Conclusion\n\nWriting clean code is a skill that improves with practice. Start refactoring today!",
     "author": {
-      "name": "Chella",
+      "name": "Anony",
       "avatar": ""
     },
     "publishedAt": "2026-09-25T14:30:00Z",
@@ -43,7 +43,7 @@
     "excerpt": "A deep dive into building high-performance, production-ready RESTful APIs using Go's standard library and best practices.",
     "content": "## Why Go for APIs?\n\nGo's simplicity, performance, and built-in concurrency make it an excellent choice for building APIs.\n\n## Project Structure\n\n```\napi/\n├── cmd/server/main.go\n├── internal/\n│   ├── handlers/\n│   ├── models/\n│   ├── middleware/\n│   └── database/\n├── go.mod\n└── go.sum\n```\n\n## Key Features\n\n- **Fast compilation** and startup\n- **Goroutines** for concurrent request handling\n- **Strong typing** for reliability\n- **Excellent standard library** for HTTP\n\n## Conclusion\n\nGo is the perfect backend companion for your React frontend!",
     "author": {
-      "name": "Chella",
+      "name": "Anony",
       "avatar": ""
     },
     "publishedAt": "2026-09-20T09:00:00Z",
