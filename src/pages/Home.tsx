@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { usePosts } from "../hooks/usePosts";
 import { PostCard } from "../components/post/PostCard";
 import { Container } from "../components/layout/Container";
-import { FiArrowRight, FiEdit3, FiBook, FiCode, FiTerminal } from "react-icons/fi";
+import { FiArrowRight, FiBook, FiCode, FiTerminal } from "react-icons/fi";
 
 const fadeUp = keyframes`
   from {
@@ -41,7 +41,7 @@ const Hero = styled.section`
     content: "";
     position: absolute;
     inset: 0;
-    background: ${({ theme }) => theme.heroOverlay || theme.gradients.heroOverlay};
+    background: ${({ theme }) => theme.gradients.heroOverlay};
   }
 
   &::after {
