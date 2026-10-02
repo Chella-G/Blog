@@ -93,16 +93,16 @@ const Title = styled.h3`
   }
 `;
 
-const Excerpt = styled.p`
-  font-size: 0.88rem;
-  color: ${({ theme }) => theme.colors.textSecondary};
-  margin: 0 0 1rem;
-  line-height: 1.6;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-`;
+// const Excerpt = styled.p`
+//   font-size: 0.88rem;
+//   color: ${({ theme }) => theme.colors.textSecondary};
+//   margin: 0 0 1rem;
+//   line-height: 1.6;
+//   display: -webkit-box;
+//   -webkit-line-clamp: 2;
+//   -webkit-box-orient: vertical;
+//   overflow: hidden;
+// `;
 
 const Meta = styled.div`
   display: flex;
@@ -165,7 +165,7 @@ export const PostCard = ({ post }: PostCardProps) => (
           </ReadTime>
         </TopRow>
         <Title>{post.title}</Title>
-        <Excerpt>{post.excerpt}</Excerpt>
+        {/* <Excerpt>{post.excerpt}</Excerpt> */}
         <Meta>
           <MetaDate>{formatDate(post.publishedAt)}</MetaDate>
           <ReadMore>
