@@ -15,6 +15,7 @@
       "Vite"
     ],
     "category": "Tutorial",
+    "thumbnail": "",
     "readTime": "5 min read"
   },
   {
@@ -33,6 +34,7 @@
       "Software Engineering"
     ],
     "category": "Engineering",
+    "thumbnail": "",
     "readTime": "7 min read"
   },
   {
@@ -51,6 +53,7 @@
       "Backend"
     ],
     "category": "Backend",
+    "thumbnail": "",
     "readTime": "10 min read"
   }
 ]
