@@ -27,7 +27,7 @@ const pulseGlow = keyframes`
 `;
 
 const Hero = styled.section`
-  min-height: 90vh;
+  min-height: 85vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,7 +35,12 @@ const Hero = styled.section`
   position: relative;
   overflow: hidden;
   background: ${({ theme }) => theme.colors.background};
-  padding: 2rem;
+  padding: 3rem 1.5rem;
+
+  @media (max-width: 768px) {
+    min-height: 70vh;
+    padding: 2.5rem 1rem;
+  }
 
   &::before {
     content: "";
@@ -187,7 +192,11 @@ const HeroDecor = styled.div`
 `;
 
 const Section = styled.section`
-  padding: 5rem 0;
+  padding: 4rem 0;
+
+  @media (max-width: 768px) {
+    padding: 2.5rem 0;
+  }
 `;
 
 const SectionHeader = styled.div`
@@ -197,10 +206,14 @@ const SectionHeader = styled.div`
   margin-bottom: 2.5rem;
   flex-wrap: wrap;
   gap: 1rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 1.75rem;
+  font-size: clamp(1.4rem, 4vw, 1.75rem);
   font-weight: 800;
   color: ${({ theme }) => theme.colors.text};
   margin: 0;
@@ -229,18 +242,25 @@ const ViewAll = styled(Link)`
 const PostsGrid = styled.div`
   display: grid;
   gap: 2rem;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 310px), 1fr));
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 `;
 
 const FeaturesGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
   gap: 1.25rem;
-  margin-top: 3rem;
+  margin-top: 2.5rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
 `;
 
 const FeatureCard = styled.div`
@@ -295,9 +315,14 @@ const StatsBar = styled.div`
   display: flex;
   justify-content: center;
   gap: 3rem;
-  padding: 2.5rem 0;
-  margin-bottom: 2rem;
+  padding: 2rem 0;
+  margin-bottom: 1.5rem;
   flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    gap: 1.5rem 2rem;
+    padding: 1.5rem 0;
+  }
 `;
 
 const StatItem = styled.div`

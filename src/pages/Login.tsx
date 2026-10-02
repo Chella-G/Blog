@@ -27,6 +27,11 @@ const Card = styled.div`
   padding: 2.5rem;
   box-shadow: ${({ theme }) => theme.shadows.glass};
   animation: ${fadeUp} 0.6s ease-out;
+
+  @media (max-width: 480px) {
+    padding: 1.75rem 1.25rem;
+    border-radius: 20px;
+  }
 `;
 
 const LogoMark = styled.div`
@@ -86,7 +91,7 @@ const Input = styled.input`
   border-radius: 50px;
   background: ${({ theme }) => theme.colors.backgroundAlt};
   color: ${({ theme }) => theme.colors.text};
-  font-size: 0.92rem;
+  font-size: 16px; /* Prevents auto zoom on mobile */
   outline: none;
   transition: border-color 0.25s, box-shadow 0.25s;
   box-sizing: border-box;
@@ -99,6 +104,10 @@ const Input = styled.input`
     border-color: ${({ theme }) => theme.colors.primary};
     box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.primary}18,
                 ${({ theme }) => theme.shadows.glow};
+  }
+
+  @media (min-width: 769px) {
+    font-size: 0.92rem;
   }
 `;
 

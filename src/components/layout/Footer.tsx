@@ -12,6 +12,10 @@ const FooterWrapper = styled.footer`
   transition: background 0.4s ease;
   position: relative;
 
+  @media (max-width: 480px) {
+    padding: 1.25rem 1rem 0.85rem;
+  }
+
   &::before {
     content: "";
     position: absolute;

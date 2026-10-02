@@ -46,10 +46,18 @@ const Thumbnail = styled.div<{ $src: string }>`
     height: 80px;
     background: linear-gradient(transparent, ${({ theme }) => theme.colors.surface});
   }
+
+  @media (max-width: 480px) {
+    height: 160px;
+  }
 `;
 
 const Content = styled.div`
   padding: 1.25rem 1.5rem;
+
+  @media (max-width: 480px) {
+    padding: 1rem 1.15rem;
+  }
 `;
 
 const TopRow = styled.div`

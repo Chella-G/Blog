@@ -73,7 +73,14 @@ const BackLink = styled(Link)`
 `;
 
 const BackBar = styled.div`
-  padding: 0.75rem 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    padding: 0.6rem 1rem;
+  }
 `;
 
 export const Post = () => {

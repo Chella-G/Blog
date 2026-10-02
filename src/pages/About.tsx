@@ -22,6 +22,11 @@ const AvatarWrapper = styled.div`
   width: 130px;
   height: 130px;
   margin: 0 auto 0.5rem;
+
+  @media (max-width: 480px) {
+    width: 100px;
+    height: 100px;
+  }
 `;
 
 const Avatar = styled.div`
@@ -38,6 +43,12 @@ const Avatar = styled.div`
   font-weight: 800;
   box-shadow: ${({ theme }) => theme.shadows.glowStrong};
   border: 3px solid ${({ theme }) => theme.colors.primary}40;
+
+  @media (max-width: 480px) {
+    width: 100px;
+    height: 100px;
+    font-size: 2.75rem;
+  }
 `;
 
 const StatusDot = styled.span`
@@ -50,11 +61,18 @@ const StatusDot = styled.span`
   background: ${({ theme }) => theme.colors.primary};
   border: 3px solid ${({ theme }) => theme.colors.background};
   box-shadow: 0 0 10px ${({ theme }) => theme.colors.primary};
+
+  @media (max-width: 480px) {
+    width: 14px;
+    height: 14px;
+    bottom: 4px;
+    right: 4px;
+  }
 `;
 
 const Name = styled.h1`
   font-family: "JetBrains Mono", monospace;
-  font-size: 2.25rem;
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
   font-weight: 800;
   color: ${({ theme }) => theme.colors.text};
   margin: 0 0 0.5rem;
@@ -64,7 +82,7 @@ const Name = styled.h1`
 const RoleBadges = styled.div`
   display: flex;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
   margin-bottom: 0.5rem;
   flex-wrap: wrap;
 `;
@@ -103,10 +121,11 @@ const RoleBadge = styled.span<{ $variant?: "green" | "purple" | "gold" }>`
 
 const Bio = styled.p`
   color: ${({ theme }) => theme.colors.muted};
-  font-size: 1.05rem;
+  font-size: clamp(0.92rem, 2.5vw, 1.05rem);
   max-width: 520px;
   margin: 0 auto 0.5rem;
   line-height: 1.6;
+  padding: 0 0.5rem;
 `;
 
 const Location = styled.div`

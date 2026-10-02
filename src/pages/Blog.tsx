@@ -70,7 +70,7 @@ const SearchInput = styled.input`
   border-radius: 50px;
   background: ${({ theme }) => theme.colors.surface};
   color: ${({ theme }) => theme.colors.text};
-  font-size: 0.85rem;
+  font-size: 16px; /* Prevents auto-zoom on mobile */
   outline: none;
   transition: border-color 0.25s, box-shadow 0.25s;
 
@@ -82,6 +82,10 @@ const SearchInput = styled.input`
     border-color: ${({ theme }) => theme.colors.primary};
     box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.primary}20,
                 ${({ theme }) => theme.shadows.glow};
+  }
+
+  @media (min-width: 769px) {
+    font-size: 0.85rem;
   }
 `;
 
@@ -114,17 +118,34 @@ const ClearBtn = styled.button`
   }
 `;
 
-/* Row 2: filter chips */
+/* Row 2: filter chips with horizontal scroll on mobile */
 const Filters = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-bottom: 0.5rem;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  overflow-x: auto;
+  padding: 0.2rem 0 0.4rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  @media (min-width: 769px) {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
 `;
 
 const FilterChip = styled.button<{ $active: boolean }>`
-  padding: 0.3rem 0.85rem;
+  padding: 0.35rem 0.95rem;
   border-radius: 50px;
+  white-space: nowrap;
+  flex-shrink: 0;
   border: 1px solid
     ${({ theme, $active }) =>
       $active ? theme.colors.primary : theme.colors.border};

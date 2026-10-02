@@ -15,7 +15,6 @@
       "Vite"
     ],
     "category": "Tutorial",
-    "thumbnail": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600&h=400&fit=crop",
     "readTime": "5 min read"
   },
   {
@@ -34,7 +33,6 @@
       "Software Engineering"
     ],
     "category": "Engineering",
-    "thumbnail": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop",
     "readTime": "7 min read"
   },
   {
@@ -53,7 +51,6 @@
       "Backend"
     ],
     "category": "Backend",
-    "thumbnail": "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=600&h=400&fit=crop",
     "readTime": "10 min read"
   }
 ]

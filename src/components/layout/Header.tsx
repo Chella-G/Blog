@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { useTheme } from "../theme/ThemeProvider";
 import { FiSun, FiMoon, FiMenu, FiX } from "react-icons/fi";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Nav = styled.nav`
   display: flex;
@@ -20,6 +20,10 @@ const Nav = styled.nav`
 
   @media (max-width: 768px) {
     padding: 0.6rem 1.25rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.5rem 0.85rem;
   }
 `;
 
@@ -42,6 +46,10 @@ const Logo = styled(Link)`
   &:hover {
     color: ${({ theme }) => theme.colors.primary};
   }
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const LogoMark = styled.span`
@@ -57,6 +65,13 @@ const LogoMark = styled.span`
   font-size: 0.85rem;
   margin-right: 8px;
   font-family: "JetBrains Mono", monospace;
+
+  @media (max-width: 480px) {
+    width: 28px;
+    height: 28px;
+    font-size: 0.78rem;
+    margin-right: 6px;
+  }
 `;
 
 const NavCenter = styled.div<{ $isOpen: boolean }>`
@@ -72,21 +87,71 @@ const NavCenter = styled.div<{ $isOpen: boolean }>`
     position: fixed;
     top: 0;
     right: 0;
-    width: 280px;
+    width: min(300px, 85vw);
     height: 100vh;
     flex-direction: column;
-    justify-content: center;
-    gap: 1rem;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 0.75rem;
     background: ${({ theme }) => theme.colors.background};
     border: none;
     border-left: 1px solid ${({ theme }) => theme.colors.border};
     border-radius: 0;
-    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.25);
+    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.35);
     transform: ${({ $isOpen }) =>
       $isOpen ? "translateX(0)" : "translateX(100%)"};
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1001;
-    padding: 2rem;
+    padding: 1.5rem 1.25rem;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+  }
+`;
+
+const DrawerHeader = styled.div`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  }
+`;
+
+const DrawerTitle = styled.span`
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 700;
+  font-size: 1rem;
+  color: ${({ theme }) => theme.colors.text};
+`;
+
+const DrawerCloseBtn = styled.button`
+  background: transparent;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${({ theme }) => theme.colors.textSecondary};
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.text};
+    border-color: ${({ theme }) => theme.colors.primary};
   }
 `;
 
@@ -117,9 +182,10 @@ const NavLink = styled(Link)<{ $active?: boolean }>`
 
   @media (max-width: 768px) {
     width: 100%;
-    text-align: center;
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
+    text-align: left;
+    padding: 0.85rem 1.25rem;
+    font-size: 0.95rem;
+    border-radius: 12px;
   }
 `;
 
@@ -191,6 +257,22 @@ export const Header = () => {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // Close drawer on path change and manage body scroll
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   const links = [
     { to: "/", label: "Home", icon: "🏠" },
     { to: "/blog", label: "Blog", icon: "📝" },
@@ -206,6 +288,12 @@ export const Header = () => {
         </Logo>
 
         <NavCenter $isOpen={menuOpen}>
+          <DrawerHeader>
+            <DrawerTitle>Menu</DrawerTitle>
+            <DrawerCloseBtn onClick={() => setMenuOpen(false)} aria-label="Close menu">
+              <FiX size={18} />
+            </DrawerCloseBtn>
+          </DrawerHeader>
           {links.map((link) => (
             <NavLink
               key={link.to}
