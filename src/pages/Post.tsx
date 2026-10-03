@@ -75,11 +75,11 @@ const BackLink = styled(Link)`
 const BackBar = styled.div`
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0.75rem 1.5rem;
+  padding: 1.25rem 1.5rem 0.25rem;
   width: 100%;
 
   @media (max-width: 768px) {
-    padding: 0.6rem 1rem;
+    padding: 1rem 1rem 0.25rem;
   }
 `;
 
@@ -117,6 +117,7 @@ export const Post = () => {
           <FiArrowLeft /> All Posts
         </BackLink>
       </BackBar>
+
       <PostDetail post={post} />
     </>
   );

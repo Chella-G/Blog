@@ -1,6 +1,7 @@
 import styled, { keyframes } from "styled-components";
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 import { Link } from "react-router-dom";
 import { Post } from "../../hooks/usePosts";
 import { formatDate } from "../../utils/formatDate";
@@ -74,12 +75,12 @@ const HeroBanner = styled.div<{ $src?: string }>`
   }
 `;
 
-const LayoutGrid = styled.div`
+const LayoutGrid = styled.div<{ $hasHero?: boolean }>`
   display: grid;
   grid-template-columns: 240px minmax(0, 1fr) 260px;
   gap: 1.75rem;
   max-width: 1280px;
-  margin: -3rem auto 0;
+  margin: ${({ $hasHero }) => ($hasHero ? "-3rem auto 0" : "1.25rem auto 0")};
   position: relative;
   z-index: 1;
   padding: 0 1.5rem 3rem;
@@ -92,14 +93,14 @@ const LayoutGrid = styled.div`
 
   @media (max-width: 900px) {
     grid-template-columns: minmax(0, 1fr);
-    margin-top: -1.5rem;
+    margin-top: ${({ $hasHero }) => ($hasHero ? "-1.5rem" : "0.75rem")};
     padding: 0 1rem 2.5rem;
     gap: 1.5rem;
   }
 
   @media (max-width: 480px) {
     padding: 0 0.75rem 2rem;
-    margin-top: -1rem;
+    margin-top: ${({ $hasHero }) => ($hasHero ? "-1rem" : "0.5rem")};
   }
 `;
 
@@ -210,7 +211,7 @@ const TOCItem = styled.li<{ $active?: boolean; $level: number }>`
   border-radius: 8px;
   border-left: 2px solid
     ${({ theme, $active }) =>
-      $active ? theme.colors.primary : "transparent"};
+    $active ? theme.colors.primary : "transparent"};
   background: ${({ theme, $active }) =>
     $active ? `${theme.colors.primary}12` : "transparent"};
 
@@ -396,6 +397,13 @@ const Title = styled.h1`
   word-break: break-word;
 `;
 
+const LeadParagraph = styled.p`
+  font-size: clamp(1rem, 2vw, 1.12rem);
+  color: ${({ theme }) => theme.colors.textSecondary};
+  line-height: 1.7;
+  margin: 0.25rem 0 1rem;
+`;
+
 const MetaBar = styled.div`
   display: flex;
   align-items: center;
@@ -429,7 +437,7 @@ const ActionBtn = styled.button<{ $primary?: boolean }>`
   padding: 0.55rem 1rem;
   border: 1px solid
     ${({ theme, $primary }) =>
-      $primary ? theme.colors.primary : theme.colors.border};
+    $primary ? theme.colors.primary : theme.colors.border};
   border-radius: 50px;
   background: ${({ theme, $primary }) =>
     $primary ? theme.colors.primary : "transparent"};
@@ -441,7 +449,7 @@ const ActionBtn = styled.button<{ $primary?: boolean }>`
 
   &:hover {
     background: ${({ theme, $primary }) =>
-      $primary ? theme.colors.primaryHover : theme.colors.primary};
+    $primary ? theme.colors.primaryHover : theme.colors.primary};
     border-color: ${({ theme }) => theme.colors.primary};
     color: #fff;
     box-shadow: ${({ theme }) => theme.shadows.glow};
@@ -578,6 +586,75 @@ const MarkdownBody = styled.div`
     margin: 1.25rem 0;
   }
 `;
+
+const CodeBlockWrapper = styled.div`
+  position: relative;
+
+  pre {
+    padding-right: 3.5rem;
+  }
+`;
+
+const CopyButton = styled.button`
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 8px;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  background: ${({ theme }) => theme.colors.surface};
+  color: ${({ theme }) => theme.colors.textSecondary};
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.primary};
+    border-color: ${({ theme }) => theme.colors.primary};
+  }
+`;
+
+const CodeBlock = ({ children }: { children?: React.ReactNode }) => {
+  const preRef = useRef<HTMLPreElement>(null);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    const text = preRef.current?.innerText ?? "";
+    try {
+      await navigator.clipboard.writeText(text.replace(/\n$/, ""));
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      setCopied(false);
+    }
+  };
+
+  return (
+    <CodeBlockWrapper>
+      <pre ref={preRef}>{children}</pre>
+      <CopyButton
+        type="button"
+        onClick={handleCopy}
+        aria-label={copied ? "Copied" : "Copy code"}
+        title={copied ? "Copied!" : "Copy"}
+      >
+        {copied ? (
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        ) : (
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+          </svg>
+        )}
+      </CopyButton>
+    </CodeBlockWrapper>
+  );
+};
 
 const TagsRow = styled.div`
   display: flex;
@@ -881,7 +958,7 @@ export const PostDetail = ({ post }: PostDetailProps) => {
 
       {post.thumbnail && <HeroBanner $src={post.thumbnail} />}
 
-      <LayoutGrid>
+      <LayoutGrid $hasHero={Boolean(post.thumbnail)}>
         {/* ── LEFT COLUMN: Table of Contents (Desktop Sticky + Scroll) ── */}
         <SidebarLeft>
           <Widget>
@@ -921,6 +998,7 @@ export const PostDetail = ({ post }: PostDetailProps) => {
         <Article>
           <Category>{post.category}</Category>
           <Title>{post.title}</Title>
+          {post.excerpt && <LeadParagraph>{post.excerpt}</LeadParagraph>}
           <MetaBar>
             <MetaItem>
               <FiCalendar size={15} />
@@ -977,7 +1055,9 @@ export const PostDetail = ({ post }: PostDetailProps) => {
 
           <MarkdownBody>
             <ReactMarkdown
+              rehypePlugins={[rehypeRaw]}
               components={{
+                pre: ({ children }) => <CodeBlock>{children}</CodeBlock>,
                 h2: ({ children }) => {
                   const text = String(children);
                   const id = sanitizeHeadingId(text);

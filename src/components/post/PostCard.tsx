@@ -8,21 +8,45 @@ const Card = styled.article`
   background: ${({ theme }) => theme.colors.surface};
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-radius: 22px;
+  border-radius: 20px;
   overflow: hidden;
   border: 1px solid ${({ theme }) => theme.colors.border};
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: ${({ theme }) => theme.gradients.accent};
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
 
   &:hover {
     transform: translateY(-6px);
     border-color: ${({ theme }) => theme.colors.borderHover};
     box-shadow: ${({ theme }) => theme.shadows.glow};
+
+    &::before {
+      opacity: 1;
+    }
   }
 `;
 
 const CardLink = styled(Link)`
   text-decoration: none;
   color: inherit;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
 `;
 
 const Thumbnail = styled.div<{ $src: string }>`
@@ -53,10 +77,13 @@ const Thumbnail = styled.div<{ $src: string }>`
 `;
 
 const Content = styled.div`
-  padding: 1.25rem 1.5rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 
   @media (max-width: 480px) {
-    padding: 1rem 1.15rem;
+    padding: 1.25rem 1rem;
   }
 `;
 
@@ -89,7 +116,7 @@ const ReadTime = styled.span`
 `;
 
 const Title = styled.h3`
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 700;
   margin: 0 0 0.5rem;
   color: ${({ theme }) => theme.colors.text};
@@ -101,21 +128,23 @@ const Title = styled.h3`
   }
 `;
 
-// const Excerpt = styled.p`
-//   font-size: 0.88rem;
-//   color: ${({ theme }) => theme.colors.textSecondary};
-//   margin: 0 0 1rem;
-//   line-height: 1.6;
-//   display: -webkit-box;
-//   -webkit-line-clamp: 2;
-//   -webkit-box-orient: vertical;
-//   overflow: hidden;
-// `;
+const Excerpt = styled.p`
+  font-size: 0.88rem;
+  color: ${({ theme }) => theme.colors.textSecondary};
+  margin: 0.25rem 0 1.25rem;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+`;
 
 const Meta = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: auto;
+  padding-top: 0.5rem;
 `;
 
 const MetaDate = styled.span`
@@ -173,7 +202,7 @@ export const PostCard = ({ post }: PostCardProps) => (
           </ReadTime>
         </TopRow>
         <Title>{post.title}</Title>
-        {/* <Excerpt>{post.excerpt}</Excerpt> */}
+        <Excerpt>{post.excerpt}</Excerpt>
         <Meta>
           <MetaDate>{formatDate(post.publishedAt)}</MetaDate>
           <ReadMore>
@@ -182,7 +211,7 @@ export const PostCard = ({ post }: PostCardProps) => (
         </Meta>
         <Tags>
           {post.tags.slice(0, 3).map((tag) => (
-            <Tag key={tag}>{tag}</Tag>
+            <Tag key={tag}>#{tag}</Tag>
           ))}
         </Tags>
       </Content>
