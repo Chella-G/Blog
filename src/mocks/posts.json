@@ -38,25 +38,5 @@
     "category": "",
     "thumbnail": "",
     "readTime": ""
-  },
-  {
-    "id": "3",
-    "slug": "building-scalable-apis-with-go",
-    "file": "scalable-apis-with-go.md",
-    "title": "Building Scalable APIs with Go",
-    "excerpt": "A deep dive into building high-performance, production-ready RESTful APIs using Go's standard library and best practices.",
-    "author": {
-      "name": "Anony",
-      "avatar": ""
-    },
-    "publishedAt": "2026-09-20T09:00:00Z",
-    "tags": [
-      "Go",
-      "API",
-      "Backend"
-    ],
-    "category": "Backend",
-    "thumbnail": "",
-    "readTime": "10 min read"
   }
 ]

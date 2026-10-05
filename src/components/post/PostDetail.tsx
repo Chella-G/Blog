@@ -77,9 +77,9 @@ const HeroBanner = styled.div<{ $src?: string }>`
 
 const LayoutGrid = styled.div<{ $hasHero?: boolean }>`
   display: grid;
-  grid-template-columns: 240px minmax(0, 1fr) 260px;
+  grid-template-columns: 220px minmax(0, 1fr) 240px;
   gap: 1.75rem;
-  max-width: 1280px;
+  max-width: 1600px;
   margin: ${({ $hasHero }) => ($hasHero ? "-3rem auto 0" : "1.25rem auto 0")};
   position: relative;
   z-index: 1;
@@ -1057,6 +1057,14 @@ export const PostDetail = ({ post }: PostDetailProps) => {
             <ReactMarkdown
               rehypePlugins={[rehypeRaw]}
               components={{
+                img: ({ src, alt, style }) => {
+                  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+                  const resolved =
+                    typeof src === "string" && src.startsWith("/") && !src.startsWith("//")
+                      ? `${base}${src}`
+                      : src;
+                  return <img src={resolved} alt={alt} style={style} />;
+                },
                 pre: ({ children }) => <CodeBlock>{children}</CodeBlock>,
                 h2: ({ children }) => {
                   const text = String(children);
