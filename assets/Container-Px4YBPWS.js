@@ -1,4 +1,4 @@
-import{C as e,T as t}from"./index-DMlALWwS.js";var n=e(),r=t.div`
+import{S as e,b as t}from"./index-CZzt6m4c.js";var n=t(),r=e.div`
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 1.5rem;

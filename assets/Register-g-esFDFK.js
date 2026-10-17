@@ -1,13 +1,13 @@
-import{C as e,E as t,O as n,T as r,h as i,j as a,m as o,r as s,w as c}from"./index-DMlALWwS.js";import{t as l}from"./Container-5a2-OY7D.js";var u=a(n(),1),d=e(),f=c`
+import{C as e,O as t,S as n,T as r,b as i,f as a,p as o,r as s,v as c,x as l}from"./index-CZzt6m4c.js";import{t as u}from"./Container-Px4YBPWS.js";var d=t(r(),1),f=i(),p=l`
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
-`,p=r.div`
+`,m=n.div`
   min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1.5rem 1rem;
-`,m=r.div`
+`,h=n.div`
   width: 100%;
   max-width: 420px;
   background: ${({theme:e})=>e.colors.surface};
@@ -16,13 +16,13 @@ import{C as e,E as t,O as n,T as r,h as i,j as a,m as o,r as s,w as c}from"./ind
   border-radius: 28px;
   padding: 2.5rem;
   box-shadow: ${({theme:e})=>e.shadows.glass};
-  animation: ${f} 0.6s ease-out;
+  animation: ${p} 0.6s ease-out;
 
   @media (max-width: 480px) {
     padding: 1.75rem 1.25rem;
     border-radius: 20px;
   }
-`,h=r.div`
+`,g=n.div`
   width: 48px;
   height: 48px;
   border-radius: 18px;
@@ -36,31 +36,31 @@ import{C as e,E as t,O as n,T as r,h as i,j as a,m as o,r as s,w as c}from"./ind
   justify-content: center;
   margin: 0 auto 0.5rem;
   box-shadow: ${({theme:e})=>e.shadows.glow};
-`,g=r.h1`
+`,_=n.h1`
   font-size: 1.6rem;
   font-weight: 800;
   color: ${({theme:e})=>e.colors.text};
   margin: 0 0 0.4rem;
   text-align: center;
-`,_=r.p`
+`,v=n.p`
   color: ${({theme:e})=>e.colors.muted};
   text-align: center;
   margin: 0 0 0.5rem;
   font-size: 0.92rem;
-`,v=r.form`
+`,y=n.form`
   display: flex;
   flex-direction: column;
   gap: 1.15rem;
-`,y=r.div`
+`,b=n.div`
   position: relative;
-`,b=r.div`
+`,x=n.div`
   position: absolute;
   left: 1rem;
   top: 50%;
   transform: translateY(-50%);
   color: ${({theme:e})=>e.colors.muted};
   display: flex;
-`,x=r.input`
+`,S=n.input`
   width: 100%;
   padding: 0.8rem 1rem 0.8rem 2.75rem;
   border: 1px solid ${({theme:e})=>e.colors.border};
@@ -85,7 +85,7 @@ import{C as e,E as t,O as n,T as r,h as i,j as a,m as o,r as s,w as c}from"./ind
   @media (min-width: 769px) {
     font-size: 0.92rem;
   }
-`,S=r.button`
+`,C=n.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -105,13 +105,7 @@ import{C as e,E as t,O as n,T as r,h as i,j as a,m as o,r as s,w as c}from"./ind
     transform: translateY(-2px);
     box-shadow: ${({theme:e})=>e.shadows.glowStrong};
   }
-
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
-  }
-`,C=r.p`
+`,w=n.p`
   text-align: center;
   color: ${({theme:e})=>e.colors.muted};
   font-size: 0.88rem;
@@ -126,4 +120,4 @@ import{C as e,E as t,O as n,T as r,h as i,j as a,m as o,r as s,w as c}from"./ind
       text-decoration: underline;
     }
   }
-`,w=()=>{let[e,n]=(0,u.useState)(``),[r,a]=(0,u.useState)(``);return(0,d.jsx)(l,{children:(0,d.jsx)(p,{children:(0,d.jsxs)(m,{children:[(0,d.jsx)(h,{children:`A`}),(0,d.jsx)(g,{children:`Welcome Back`}),(0,d.jsx)(_,{children:`Sign in to your account`}),(0,d.jsxs)(v,{onSubmit:t=>{t.preventDefault(),console.log(`Login attempt:`,{email:e,password:r}),alert(`Login functionality will be connected once the Go backend is ready!`)},children:[(0,d.jsxs)(y,{children:[(0,d.jsx)(b,{children:(0,d.jsx)(i,{size:16})}),(0,d.jsx)(x,{type:`email`,placeholder:`Email address`,value:e,onChange:e=>n(e.target.value),required:!0})]}),(0,d.jsxs)(y,{children:[(0,d.jsx)(b,{children:(0,d.jsx)(o,{size:16})}),(0,d.jsx)(x,{type:`password`,placeholder:`Password`,value:r,onChange:e=>a(e.target.value),required:!0})]}),(0,d.jsxs)(S,{type:`submit`,children:[`Sign In `,(0,d.jsx)(s,{size:16})]})]}),(0,d.jsxs)(C,{children:[`Don't have an account? `,(0,d.jsx)(t,{to:`/register`,children:`Sign up`})]})]})})})};export{w as Login};
+`,T=()=>{let[t,n]=(0,d.useState)(``),[r,i]=(0,d.useState)(``),[l,p]=(0,d.useState)(``),[T,E]=(0,d.useState)(``);return(0,f.jsx)(u,{children:(0,f.jsx)(m,{children:(0,f.jsxs)(h,{children:[(0,f.jsx)(g,{children:`A`}),(0,f.jsx)(_,{children:`Create Account`}),(0,f.jsx)(v,{children:`Join the community`}),(0,f.jsxs)(y,{onSubmit:e=>{if(e.preventDefault(),l!==T){alert(`Passwords do not match!`);return}console.log(`Register attempt:`,{name:t,email:r,password:l}),alert(`Registration will be connected once the Go backend is ready!`)},children:[(0,f.jsxs)(b,{children:[(0,f.jsx)(x,{children:(0,f.jsx)(c,{size:16})}),(0,f.jsx)(S,{type:`text`,placeholder:`Full name`,value:t,onChange:e=>n(e.target.value),required:!0})]}),(0,f.jsxs)(b,{children:[(0,f.jsx)(x,{children:(0,f.jsx)(o,{size:16})}),(0,f.jsx)(S,{type:`email`,placeholder:`Email address`,value:r,onChange:e=>i(e.target.value),required:!0})]}),(0,f.jsxs)(b,{children:[(0,f.jsx)(x,{children:(0,f.jsx)(a,{size:16})}),(0,f.jsx)(S,{type:`password`,placeholder:`Password`,value:l,onChange:e=>p(e.target.value),required:!0,minLength:6})]}),(0,f.jsxs)(b,{children:[(0,f.jsx)(x,{children:(0,f.jsx)(a,{size:16})}),(0,f.jsx)(S,{type:`password`,placeholder:`Confirm password`,value:T,onChange:e=>E(e.target.value),required:!0,minLength:6})]}),(0,f.jsxs)(C,{type:`submit`,children:[`Create Account `,(0,f.jsx)(s,{size:16})]})]}),(0,f.jsxs)(w,{children:[`Already have an account? `,(0,f.jsx)(e,{to:`/login`,children:`Sign in`})]})]})})})};export{T as Register};
