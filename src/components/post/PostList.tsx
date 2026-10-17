@@ -3,14 +3,8 @@ import { Post } from "../../hooks/usePosts";
 import { PostCard } from "./PostCard";
 
 const Grid = styled.div`
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 310px), 1fr));
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
+  display: flex;
+  flex-direction: column;
 `;
 
 const spin = keyframes`

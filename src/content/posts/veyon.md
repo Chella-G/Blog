@@ -1,205 +1,128 @@
-## Veyon Free and Open Source (FOSS) Application
+# What Is Veyon?
 
-Veyon is a free and open-source application used for the remote monitoring and control of computers in educational environments such as schools, colleges, and computer labs.
+Veyon helps teachers and IT staff manage classroom computers from one computer. It is commonly used in school and college labs.
 
-## To Download the Software
+The teacher computer runs **Veyon Master**. The computers being managed are **Clients**. Staff can view or control screens, demonstrate lessons, open apps, and manage sessions, depending on setup and permissions.
 
-```text
-[https://veyon.io/download/](https://veyon.io/download/)
-```
+## Who is this guide for?
 
-<a href="https://veyon.io/download/" target="_blank">Download Veyon</a>
+- Teachers who use computers for lessons.
+- IT staff setting up a school or college lab.
+- Administrators who manage several computers.
 
-<img src="/assets/To_Download.png" alt="To Download" style="max-width:100%;"/>
+This guide focuses on a Windows setup. Veyon also supports Linux and macOS. Check the <a href="https://veyon.io/download/" target="_blank" rel="noopener noreferrer">download page</a> for current platform details.
 
-## Choose Your OS and Correct Architecture
+## What do you need?
 
-Scroll down and select your operating system and the correct architecture.
+- One Master computer and the Client computers.
+- Permission to install software and configure each computer.
+- A working local network connecting them.
+- Each Client's computer name or IP address.
+- One authentication method configured on all computers. For key authentication, keep the private key secure and install only the public key on Clients.
 
-For most modern Windows computers, select the Windows 64-bit version.
+Download Veyon from <a href="https://veyon.io/download/" target="_blank" rel="noopener noreferrer">veyon.io/download</a>.
 
-<img src="/assets/Choose_Os_with_arc.png" alt="Choose OS and Architecture" style="max-width:100%;"/>
+![Veyon download page and available operating system options](/assets/To_Download.png)
 
-> Before installation: Understand the basic concept of Veyon. The Master is the computer used by the teacher or administrator, while the Client computers are the systems that will be monitored and controlled.
+## How it works
 
-## Install Veyon on the Master System
+Veyon Master connects to the Clients over the network. The Master needs a list of computers and locations, and both sides need matching authentication settings.
 
-Install Veyon on the computer that you will use as the Master.
+## Install Veyon
 
-After installation, open:
+Install Veyon on the Master and every Client. On Client-only computers, deselect **Veyon Master** during installation.
 
-```text
-Veyon Configurator
-```
+![Choose an operating system in the Veyon installer](/assets/Choose_Os_with_arc.png)
 
-## Configure General Settings
+## Configure the Master
 
-In Veyon Configurator, open the General section and configure the required settings.
+Open **Veyon Configurator** on the Master. The setup notes use these settings:
 
-<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:1rem; align-items:start; margin:1.25rem 0;">
-<img src="/assets/Config_general1.png" alt="Veyon General Settings" style="width:100%; height:auto; margin:0; border:none;"/>
+- **Authentication:** Logon authentication
+- **Network object directory:** Builtin
+- **User groups:** Default system groups
 
-<img src="/assets/Config_general2.png" alt="Veyon General Settings" style="width:100%; height:auto; margin:0; border:none;"/>
+<div class="image-grid">
+<img src="/assets/Config_general1.png" alt="General settings in Veyon Configurator" />
+<img src="/assets/Config_general2.png" alt="More general settings" />
 </div>
 
-## Configure Veyon Service
+For the service plugin, the notes select **Builtin VNC Server (UltraVNC)**.
 
-Next, open the Service section and configure the Veyon Service.
+![Veyon service configuration](/assets/Config_service.png)
 
-<img src="/assets/Config_service.png" alt="Veyon Service Configuration" style="max-width:100%;"/>
+### Set up authentication keys
 
-Make sure the Veyon Service is enabled and running on the Master system.
+1. Create and export a key pair in **Authentication keys**.
+2. Keep the private key on the Master and protect it.
+3. Copy the public key to a USB drive or secure network share for the Clients.
+4. Apply the settings.
 
-## Configure Authentication
-
-Open the Authentication section.
-
-For this setup, use Key File Authentication.
-
-<img src="/assets/Config_Auth_key1.png" alt="Veyon Authentication Configuration" style="max-width:100%;"/>
-
-## Create an Authentication Key Pair
-
-Create a new authentication key pair.
-
-The key pair contains:
-
-```text
-Private Key
-Public Key
-```
-
-<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:1rem; align-items:start; margin:1.25rem 0;">
-<img src="/assets/Config_Auth_key2.png" alt="Create Authentication Key" style="width:100%; height:auto;"/>
-
-<img src="/assets/Config_Auth_key3.png" alt="Authentication Key Settings" style="width:100%; height:auto;"/>
+<div class="image-grid">
+<img src="/assets/Config_Auth_key1.png" alt="Authentication key settings" />
+<img src="/assets/Config_Auth_key2.png" alt="Authentication key options" />
+<img src="/assets/Config_Auth_key3.png" alt="Exporting authentication keys" />
+<img src="/assets/Config_Auth_key4.png" alt="Authentication key example" />
+<img src="/assets/Config_Auth_key5.png" alt="Authentication key export example" />
 </div>
 
-## Export the Authentication Keys
+> The notes list both Logon authentication and key creation. These are different methods. Choose one method and configure the Master and Clients consistently.
 
-Export the authentication keys after creating the key pair.
+## Configure the Clients
 
-<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:1rem; align-items:start; margin:1.25rem 0;">
-<img src="/assets/Config_Auth_key4.png" alt="Export Authentication Key" style="width:100%; height:auto;"/>
+1. Open **Veyon Configurator** on each Client.
+2. Match the Master’s applicable General and Service settings.
+3. Import the public key if using key authentication. Do not create a new key pair on each Client.
+4. Apply the settings.
 
-<img src="/assets/Config_Auth_key5.png" alt="Authentication Key Export" style="width:100%; height:auto;"/>
-</div>
+## Find a computer name and MAC address
 
-Keep the private key secure and accessible only to the administrator.
-
-The public key can be copied to a USB drive or a shared folder so that it can be used later during the Client configuration.
-
-> Important: Never share the private key with unauthorized users.
-
-## Configure Locations and Computers
-
-After configuring authentication, open:
-
-```text
-Veyon Configurator
-        ↓
-Locations & Computers
-```
-
-This section is used to create the computer lab location and add the computers that you want to manage.
-
-<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:1rem; align-items:start; margin:1.25rem 0;">
-<img src="/assets/Config_loc_&_comp1.png" alt="Veyon Locations and Computers" style="width:100%; height:auto;"/>
-
-<img src="/assets/Config_loc_&_comp2.png" alt="Veyon Computer Configuration" style="width:100%; height:auto;"/>
-</div>
-
-For example, create a location:
-
-```text
-Computer Lab 1
-```
-
-Then add the computers inside that location.
-
-For each computer, you will need:
-
-```text
-Name
-Host Address / IP Address
-MAC Address
-```
-
-You can get these details from the respective Client computer.
-
-### Computer Name
-
-On the Client computer, open Command Prompt and run:
+On a Windows Client, open Command Prompt and run:
 
 ```cmd
 hostname
 ```
 
-Example:
-
-```text
-LAB-PC-01
-```
-
-### IP Address
-
-Run:
+To find the MAC address, run:
 
 ```cmd
-ipconfig
+getmac
 ```
 
-Find the:
+Use the address for the adapter connected to the lab network. `ipconfig /all` also shows it as **Physical Address**.
 
-```text
-IPv4 Address
+## Add Clients to the Master
+
+1. In Veyon Configurator, open **Locations & Computers**.
+2. Create a location, such as `Computer Lab 1`.
+3. Add each Client with a name, hostname or IP address, and MAC address.
+4. Apply the configuration.
+
+<div class="image-grid">
+<img src="/assets/Config_loc_&_comp1.png" alt="Locations and computers settings" />
+<img src="/assets/Config_loc_&_comp2.png" alt="Adding a computer to a location" />
+</div>
+
+## Check the setup
+
+Open **Veyon Master** and confirm the Clients appear. Test screen viewing or another permitted action.
+
+If a Client is unavailable, check the network, address, running service, and authentication settings.
+
+## Optional: Wake-on-LAN
+
+Wake-on-LAN requires compatible hardware and network settings. On Windows, the notes recommend turning off Fast Startup:
+
+1. Open **Power Options** → **Choose what the power buttons do**.
+2. Select **Change settings that are currently unavailable**.
+3. Clear **Turn on fast startup** and save.
+
+## Other notes
+
+The notes include this PowerShell example for running a script:
+
+```powershell
+powershell.exe -ExecutionPolicy Bypass -File "C:\path\to\your_script.ps1"
 ```
 
-Example:
-
-```text
-192.168.1.101
-```
-
-### MAC Address
-
-Run:
-
-```cmd
-ipconfig /all
-```
-
-Find:
-
-```text
-Physical Address
-```
-
-Example:
-
-```text
-AA-BB-CC-11-22-33
-```
-
-You can then add the computer to Veyon using:
-
-```text
-Name:
-LAB-PC-01
-
-Host Address:
-192.168.1.101
-
-MAC Address:
-AA-BB-CC-11-22-33
-```
-
-Repeat this process for each computer in the laboratory.
-
-> Tip: If the computers receive changing IP addresses through DHCP, consider using DHCP reservations or reliable hostnames to make the Veyon configuration easier to maintain.
-
----
-
-At this point, the Master configuration is complete.
-
-The next part will cover the Client configuration, including installing Veyon, configuring General and Service settings, and importing the Public Key.
+Replace the example path with your script path. They also mention HFS for sharing files over HTTP, but do not include a complete setup procedure.

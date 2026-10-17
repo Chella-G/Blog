@@ -1,26 +1,7 @@
 [
+
   {
     "id": "1",
-    "slug": "getting-started-with-react-and-typescript",
-    "file": "react-typescript.md",
-    "title": "Getting Started with React and TypeScript",
-    "excerpt": "Learn how to set up a modern React project with TypeScript for type-safe development and better developer experience.",
-    "author": {
-      "name": "Anony",
-      "avatar": ""
-    },
-    "publishedAt": "2026-09-28T10:00:00Z",
-    "tags": [
-      "React",
-      "TypeScript",
-      "Vite"
-    ],
-    "category": "Tutorial",
-    "thumbnail": "",
-    "readTime": "5 min read"
-  },
-  {
-    "id": "2",
     "slug": "Veyon Application Detailed Blog",
     "file": "veyon.md",
     "title": "Veyon Application Detailed Blog",

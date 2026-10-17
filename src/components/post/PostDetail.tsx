@@ -2,23 +2,18 @@ import styled, { keyframes } from "styled-components";
 import { useMemo, useState, useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
-import { Link } from "react-router-dom";
 import { Post } from "../../hooks/usePosts";
 import { formatDate } from "../../utils/formatDate";
 import {
   FiClock,
-  FiCalendar,
   FiUser,
   FiShare2,
   FiArrowUp,
-  FiArrowLeft,
   FiList,
   FiCheck,
   FiChevronDown,
   FiChevronUp,
   FiX,
-  FiBookOpen,
-  FiBookmark,
 } from "react-icons/fi";
 
 const fadeUp = keyframes`
@@ -77,9 +72,9 @@ const HeroBanner = styled.div<{ $src?: string }>`
 
 const LayoutGrid = styled.div<{ $hasHero?: boolean }>`
   display: grid;
-  grid-template-columns: 220px minmax(0, 1fr) 240px;
-  gap: 1.75rem;
-  max-width: 1600px;
+  grid-template-columns: 260px minmax(0, 1fr) 240px;
+  gap: 2rem;
+  max-width: 1440px;
   margin: ${({ $hasHero }) => ($hasHero ? "-3rem auto 0" : "1.25rem auto 0")};
   position: relative;
   z-index: 1;
@@ -87,8 +82,8 @@ const LayoutGrid = styled.div<{ $hasHero?: boolean }>`
   align-items: start;
 
   @media (max-width: 1100px) {
-    grid-template-columns: 200px minmax(0, 1fr) 220px;
-    gap: 1.25rem;
+    grid-template-columns: 220px minmax(0, 1fr) 180px;
+    gap: 1.5rem;
   }
 
   @media (max-width: 900px) {
@@ -126,49 +121,17 @@ const SidebarLeft = styled.aside`
   }
 `;
 
-/* ── Right Sidebar (Widgets) with separate scroll ── */
-const SidebarRight = styled.aside`
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  position: sticky;
-  top: 5rem;
-  max-height: calc(100vh - 6.5rem);
-  overflow-y: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  padding-right: 0.25rem;
-  -webkit-overflow-scrolling: touch;
-
-  &::-webkit-scrollbar {
-    display: none;
-    width: 0;
-    height: 0;
-  }
-
-  @media (max-width: 900px) {
-    display: none;
-  }
-`;
-
-/* ── Center Column: Article ── */
+/* ── Center Column: Article (clean, no card styling) ── */
 const Article = styled.article`
-  background: ${({ theme }) => theme.colors.background};
-  border-radius: 20px;
-  padding: 2.25rem 2.5rem;
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  box-shadow: ${({ theme }) => theme.shadows.elevation};
+  padding: 0.5rem 0;
   animation: ${fadeUp} 0.6s ease-out;
   min-width: 0;
+`;
 
-  @media (max-width: 768px) {
-    padding: 1.5rem;
-    border-radius: 18px;
-  }
-
-  @media (max-width: 480px) {
-    padding: 1.15rem 0.95rem;
-    border-radius: 14px;
+/* ── Right Column: empty spacer (keeps layout balanced) ── */
+const SidebarRightSpacer = styled.div`
+  @media (max-width: 900px) {
+    display: none;
   }
 `;
 
@@ -190,41 +153,59 @@ const WidgetTitle = styled.h3`
   gap: 0.5rem;
 `;
 
+const TOCTitle = styled.h4`
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: ${({ theme }) => theme.colors.muted};
+  margin-bottom: 0.85rem;
+  letter-spacing: 0.2px;
+`;
+
 const TOCList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.5rem;
+  border-left: 1px solid ${({ theme }) => `${theme.colors.border}60`};
+  padding-left: 0.85rem;
 `;
 
 const TOCItem = styled.li<{ $active?: boolean; $level: number }>`
   font-size: 0.82rem;
+  line-height: 1.5;
   color: ${({ theme, $active }) =>
-    $active ? theme.colors.primary : theme.colors.muted};
-  font-weight: ${({ $active }) => ($active ? 600 : 400)};
+    $active ? theme.colors.text : theme.colors.muted};
+  font-weight: ${({ $active }) => ($active ? 500 : 400)};
   cursor: pointer;
-  transition: all 0.2s ease;
-  padding: 0.25rem 0.5rem;
-  padding-left: ${({ $level }) => ($level === 3 ? "1.25rem" : "0.5rem")};
-  border-radius: 8px;
-  border-left: 2px solid
-    ${({ theme, $active }) =>
-    $active ? theme.colors.primary : "transparent"};
-  background: ${({ theme, $active }) =>
-    $active ? `${theme.colors.primary}12` : "transparent"};
+  transition: color 0.15s ease;
+  padding-left: ${({ $level }) => ($level === 3 ? "0.75rem" : "0")};
+  position: relative;
+
+  ${({ $active, theme }) =>
+    $active &&
+    `
+    &::before {
+      content: "";
+      position: absolute;
+      left: calc(-0.85rem - 1px);
+      top: 2px;
+      bottom: 2px;
+      width: 2px;
+      background: ${theme.colors.primary};
+      border-radius: 2px;
+    }
+  `}
 
   &:hover {
-    color: ${({ theme }) => theme.colors.primary};
-    background: ${({ theme }) => `${theme.colors.primary}08`};
+    color: ${({ theme }) => theme.colors.text};
   }
 
   a {
     display: block;
     color: inherit;
     text-decoration: none;
-    line-height: 1.4;
   }
 `;
 
@@ -373,53 +354,34 @@ const StatLbl = styled.div`
   margin-top: 2px;
 `;
 
-const Category = styled.span`
-  display: inline-block;
-  padding: 0.3rem 0.85rem;
-  border-radius: 50px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  background: ${({ theme }) => theme.colors.primary}18;
-  color: ${({ theme }) => theme.colors.primary};
-  border: 1px solid ${({ theme }) => theme.colors.primary}25;
-  margin-bottom: 1rem;
-`;
-
 const Title = styled.h1`
-  font-size: clamp(1.6rem, 4vw, 2.5rem);
-  font-weight: 800;
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 600;
   color: ${({ theme }) => theme.colors.text};
   line-height: 1.25;
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.85rem;
   letter-spacing: -0.5px;
   word-break: break-word;
 `;
 
 const LeadParagraph = styled.p`
-  font-size: clamp(1rem, 2vw, 1.12rem);
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
   color: ${({ theme }) => theme.colors.textSecondary};
-  line-height: 1.7;
-  margin: 0.25rem 0 1rem;
+  line-height: 1.6;
+  margin: 0 0 1.25rem;
+  font-weight: 400;
 `;
 
 const MetaBar = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1rem;
-  padding-bottom: 0.75rem;
-  margin-bottom: 1.25rem;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
-  font-size: 0.85rem;
+  gap: 1.5rem;
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid ${({ theme }) => `${theme.colors.border}60`};
+  font-size: 0.84rem;
   color: ${({ theme }) => theme.colors.muted};
-`;
-
-const MetaItem = styled.span`
-  display: flex;
-  align-items: center;
-  gap: 6px;
 `;
 
 const ShareActions = styled.div`
@@ -459,43 +421,84 @@ const ActionBtn = styled.button<{ $primary?: boolean }>`
 
 const MarkdownBody = styled.div`
   color: ${({ theme }) => theme.colors.text};
-  line-height: 1.85;
-  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  line-height: 1.8;
+  font-size: 0.95rem; /* default small */
+  font-weight: 400;
   word-break: break-word;
-
-  h2 {
-    font-size: clamp(1.25rem, 3vw, 1.6rem);
-    margin: 2.5rem 0 1rem;
-    color: ${({ theme }) => theme.colors.text};
-    font-weight: 700;
-    scroll-margin-top: 5rem;
-    word-break: break-word;
-  }
-
-  h3 {
-    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-    margin: 2rem 0 0.75rem;
-    font-weight: 600;
-    scroll-margin-top: 5rem;
-    word-break: break-word;
-  }
 
   p {
     margin-bottom: 1.25rem;
-    color: ${({ theme }) => theme.colors.textSecondary};
+    color: ${({ theme }) => theme.colors.text};
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.8;
+  }
+
+  strong,
+  b {
+    font-weight: 600; /* reduced bold weight - not heavy */
+    color: ${({ theme }) => theme.colors.text};
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: ${({ theme }) => theme.colors.text};
+    letter-spacing: -0.015em;
+  }
+
+  h1 {
+    font-size: 1.55rem;
+    font-weight: 600;
+    margin: 2.25rem 0 1rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+    font-weight: 600; /* reduced bold */
+    margin: 2.25rem 0 0.85rem;
+    scroll-margin-top: 5rem;
+    word-break: break-word;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  h3 {
+    font-size: 1.12rem;
+    font-weight: 600; /* reduced bold */
+    margin: 1.85rem 0 0.65rem;
+    scroll-margin-top: 5rem;
+    word-break: break-word;
+    padding-left: 0;
+    border-left: none;
+  }
+
+  h4 {
+    font-size: 1.02rem;
+    font-weight: 500;
+    margin: 1.5rem 0 0.5rem;
   }
 
   a {
     color: ${({ theme }) => theme.colors.primary};
     text-decoration: underline;
-    text-underline-offset: 2px;
+    text-underline-offset: 3px;
+    text-decoration-color: ${({ theme }) => `${theme.colors.primary}50`};
+    transition: text-decoration-color 0.2s;
+
+    &:hover {
+      text-decoration-color: ${({ theme }) => theme.colors.primary};
+    }
   }
 
   code {
     background: ${({ theme }) => theme.colors.codeBlock};
     padding: 0.15rem 0.45rem;
-    border-radius: 8px;
-    font-size: 0.88em;
+    border-radius: 4px;
+    font-size: 0.84em;
     font-family: "JetBrains Mono", monospace;
     border: 1px solid ${({ theme }) => theme.colors.border};
     word-break: break-all;
@@ -504,10 +507,11 @@ const MarkdownBody = styled.div`
   pre {
     background: ${({ theme }) => theme.colors.codeBlock};
     border: 1px solid ${({ theme }) => theme.colors.border};
-    border-radius: 16px;
-    padding: 1.25rem;
+    border-radius: 8px;
+    padding: 1.15rem;
     overflow-x: auto;
     margin: 1.5rem 0;
+    font-size: 0.82rem;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -522,7 +526,7 @@ const MarkdownBody = styled.div`
       background: none;
       padding: 0;
       border: none;
-      font-size: 0.85em;
+      font-size: inherit;
       word-break: normal;
     }
   }
@@ -532,8 +536,9 @@ const MarkdownBody = styled.div`
     width: 100%;
     overflow-x: auto;
     border-collapse: collapse;
-    margin: 1.5rem 0;
-    font-size: 0.9rem;
+    margin: 1.75rem 0;
+    font-size: 0.88rem;
+    font-family: inherit;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -555,36 +560,164 @@ const MarkdownBody = styled.div`
 
   th {
     background: ${({ theme }) => theme.colors.surface};
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
   }
 
   ul,
   ol {
-    padding-left: 1.5rem;
+    padding-left: 1.4rem;
     margin-bottom: 1.25rem;
-    color: ${({ theme }) => theme.colors.textSecondary};
+    color: ${({ theme }) => theme.colors.text};
+    font-size: 0.95rem;
   }
 
   li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
+    line-height: 1.75;
   }
 
   blockquote {
-    border-left: 3px solid ${({ theme }) => theme.colors.primary};
-    margin: 1.5rem 0;
-    color: ${({ theme }) => theme.colors.muted};
+    border-left: 2px solid ${({ theme }) => theme.colors.border};
+    margin: 1.75rem 0;
+    color: ${({ theme }) => theme.colors.textSecondary};
     font-style: italic;
-    background: ${({ theme }) => theme.colors.surface};
-    border-radius: 0 12px 12px 0;
-    padding: 1rem 1.25rem;
+    background: transparent;
+    padding: 0.4rem 1.25rem;
+    line-height: 1.75;
+    font-size: 1rem;
   }
 
   img {
     max-width: 100%;
+    width: auto;
+    max-height: min(300px, 48vh);
     height: auto;
-    border-radius: 16px;
-    margin: 1.25rem 0;
+    object-fit: contain;
+    border: 1px solid ${({ theme }) => theme.colors.border};
+    border-radius: 10px;
+    background: ${({ theme }) => theme.colors.surface};
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.07);
+    margin: 0 auto;
+    display: block;
+    transition: transform 180ms ease, box-shadow 180ms ease;
   }
+
+  .image-trigger {
+    all: unset;
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto;
+    cursor: zoom-in;
+  }
+
+  .image-trigger:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.colors.primary};
+    outline-offset: 4px;
+    border-radius: 10px;
+  }
+
+  p:has(> .image-trigger) {
+    margin: 0 0 1.25rem;
+  }
+
+  .image-trigger:hover img {
+    transform: translateY(-2px) scale(1.035);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+  }
+
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .image-grid .image-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image-grid img {
+    max-height: 240px;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: none;
+  }
+
+  .image-grid .image-trigger:hover img {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
+  }
+
+  @media (max-width: 520px) {
+    .image-grid {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    img {
+      max-height: 240px;
+      border-radius: 8px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    img {
+      transition: none;
+    }
+  }
+
+  hr {
+    border: none;
+    height: 1px;
+    background: ${({ theme }) => `${theme.colors.border}60`};
+    margin: 2.25rem 0;
+  }
+`;
+
+const ImageViewerOverlay = styled.div`
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3.5rem 1.5rem 1.5rem;
+  background: rgba(8, 12, 20, 0.9);
+  cursor: zoom-out;
+`;
+
+const ImageViewerImage = styled.img`
+  max-width: min(96vw, 1500px);
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.5);
+  cursor: default;
+`;
+
+const ImageViewerClose = styled.button`
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  cursor: pointer;
 `;
 
 const CodeBlockWrapper = styled.div`
@@ -860,6 +993,23 @@ export const PostDetail = ({ post }: PostDetailProps) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [toastMsg, setToastMsg] = useState("");
+  const [imageViewer, setImageViewer] = useState<{ src: string; alt: string } | null>(null);
+
+  useEffect(() => {
+    if (!imageViewer) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setImageViewer(null);
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [imageViewer]);
 
   // Extract dynamic Table of Contents from markdown
   const toc = useMemo(() => {
@@ -961,57 +1111,42 @@ export const PostDetail = ({ post }: PostDetailProps) => {
       <LayoutGrid $hasHero={Boolean(post.thumbnail)}>
         {/* ── LEFT COLUMN: Table of Contents (Desktop Sticky + Scroll) ── */}
         <SidebarLeft>
-          <Widget>
-            <WidgetTitle>
-              <FiList /> Table of Contents
-            </WidgetTitle>
-            <TOCList>
-              {toc.length > 0 ? (
-                toc.map((heading, idx) => (
-                  <TOCItem
-                    key={idx}
-                    $level={heading.level}
-                    $active={activeHeadingId === heading.id}
-                    onClick={() => handleHeadingClick(heading.id)}
+          <TOCTitle>On this page</TOCTitle>
+          <TOCList>
+            {toc.length > 0 ? (
+              toc.map((heading, idx) => (
+                <TOCItem
+                  key={idx}
+                  $level={heading.level}
+                  $active={activeHeadingId === heading.id}
+                  onClick={() => handleHeadingClick(heading.id)}
+                >
+                  <a
+                    href={`#${heading.id}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleHeadingClick(heading.id);
+                    }}
                   >
-                    <a
-                      href={`#${heading.id}`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleHeadingClick(heading.id);
-                      }}
-                    >
-                      {heading.text}
-                    </a>
-                  </TOCItem>
-                ))
-              ) : (
-                <TOCItem $level={2} style={{ color: "inherit" }}>
-                  No sections found
+                    {heading.text}
+                  </a>
                 </TOCItem>
-              )}
-            </TOCList>
-          </Widget>
+              ))
+            ) : (
+              <TOCItem $level={2} style={{ color: "inherit" }}>
+                No sections found
+              </TOCItem>
+            )}
+          </TOCList>
         </SidebarLeft>
 
         {/* ── MIDDLE COLUMN: Article Content ── */}
         <Article>
-          <Category>{post.category}</Category>
           <Title>{post.title}</Title>
           {post.excerpt && <LeadParagraph>{post.excerpt}</LeadParagraph>}
           <MetaBar>
-            <MetaItem>
-              <FiCalendar size={15} />
-              {formatDate(post.publishedAt)}
-            </MetaItem>
-            <MetaItem>
-              <FiClock size={15} />
-              {post.readTime}
-            </MetaItem>
-            <MetaItem>
-              <FiBookOpen size={15} />
-              {wordCount} words
-            </MetaItem>
+            <span>Published {formatDate(post.publishedAt)}</span>
+            {post.readTime && <span>{post.readTime}</span>}
           </MetaBar>
 
           {/* Mobile & Tablet In-Article Table of Contents (Collapsible + Scroll) */}
@@ -1063,7 +1198,18 @@ export const PostDetail = ({ post }: PostDetailProps) => {
                     typeof src === "string" && src.startsWith("/") && !src.startsWith("//")
                       ? `${base}${src}`
                       : src;
-                  return <img src={resolved} alt={alt} style={style} />;
+                  if (typeof resolved !== "string") return null;
+                  const imageAlt = typeof alt === "string" ? alt : "Article image";
+                  return (
+                    <button
+                      type="button"
+                      className="image-trigger"
+                      aria-label={`Open image: ${imageAlt}`}
+                      onClick={() => setImageViewer({ src: resolved, alt: imageAlt })}
+                    >
+                      <img src={resolved} alt={imageAlt} style={style} />
+                    </button>
+                  );
                 },
                 pre: ({ children }) => <CodeBlock>{children}</CodeBlock>,
                 h2: ({ children }) => {
@@ -1143,78 +1289,8 @@ export const PostDetail = ({ post }: PostDetailProps) => {
           </MobileWidgetsSection>
         </Article>
 
-        {/* ── RIGHT COLUMN: Widgets (Desktop Sticky + Scroll) ── */}
-        <SidebarRight>
-          {/* Author Widget */}
-          <Widget>
-            <WidgetTitle>
-              <FiUser /> Author
-            </WidgetTitle>
-            <AuthorInfo>
-              <AuthorAvatar>A</AuthorAvatar>
-              <AuthorDetails>
-                <AuthorName>{post.author.name}</AuthorName>
-                <AuthorBio>
-                  Sharing thoughts on software engineering, clean code, and
-                  modern web development.
-                </AuthorBio>
-              </AuthorDetails>
-            </AuthorInfo>
-          </Widget>
-
-          {/* Reading Stats Widget */}
-          <Widget>
-            <WidgetTitle>
-              <FiClock /> Reading Stats
-            </WidgetTitle>
-            <ReadingStatsGrid>
-              <StatCard>
-                <StatVal>{post.readTime}</StatVal>
-                <StatLbl>Est. Time</StatLbl>
-              </StatCard>
-              <StatCard>
-                <StatVal>{Math.round(scrollProgress)}%</StatVal>
-                <StatLbl>Completed</StatLbl>
-              </StatCard>
-            </ReadingStatsGrid>
-          </Widget>
-
-          {/* Share Widget */}
-          <Widget>
-            <WidgetTitle>
-              <FiShare2 /> Share
-            </WidgetTitle>
-            <ShareActions>
-              <ActionBtn $primary onClick={handleShare}>
-                <FiShare2 size={14} />
-                Share Article
-              </ActionBtn>
-              <ActionBtn onClick={handleCopyLink}>
-                <FiCheck size={14} />
-                Copy Link
-              </ActionBtn>
-            </ShareActions>
-          </Widget>
-
-          {/* Quick Navigation Widget */}
-          <Widget>
-            <WidgetTitle>
-              <FiBookmark /> Quick Links
-            </WidgetTitle>
-            <ShareActions>
-              <ActionBtn onClick={scrollToTop}>
-                <FiArrowUp size={14} />
-                Scroll to Top
-              </ActionBtn>
-              <Link to="/blog" style={{ textDecoration: "none" }}>
-                <ActionBtn>
-                  <FiArrowLeft size={14} />
-                  Back to All Posts
-                </ActionBtn>
-              </Link>
-            </ShareActions>
-          </Widget>
-        </SidebarRight>
+        {/* ── RIGHT COLUMN: Empty spacer to keep layout balanced ── */}
+        <SidebarRightSpacer />
       </LayoutGrid>
 
       {/* ── Mobile Floating Quick Actions Dock (< 900px) ── */}
@@ -1267,6 +1343,28 @@ export const PostDetail = ({ post }: PostDetailProps) => {
           </TOCList>
         </DrawerScrollArea>
       </DrawerContent>
+
+      {imageViewer && (
+        <ImageViewerOverlay
+          role="dialog"
+          aria-modal="true"
+          aria-label="Image viewer"
+          onClick={() => setImageViewer(null)}
+        >
+          <ImageViewerClose
+            type="button"
+            aria-label="Close image viewer"
+            onClick={() => setImageViewer(null)}
+          >
+            <FiX size={22} />
+          </ImageViewerClose>
+          <ImageViewerImage
+            src={imageViewer.src}
+            alt={imageViewer.alt}
+            onClick={(event) => event.stopPropagation()}
+          />
+        </ImageViewerOverlay>
+      )}
 
       {/* Feedback Toast */}
       {showToast && (

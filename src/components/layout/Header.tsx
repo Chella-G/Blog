@@ -3,12 +3,14 @@ import styled, { css } from "styled-components";
 import { useTheme } from "../theme/ThemeProvider";
 import { FiSun, FiMoon, FiMenu, FiX } from "react-icons/fi";
 import { useState, useEffect } from "react";
+import { ThemeCustomizer } from "./ThemeCustomizer";
 
 const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.6rem 2.5rem;
+  font-family: ${({ theme }) => theme.fonts.base};
   background: ${({ theme }) => theme.gradients.navGlass};
   backdrop-filter: blur(20px) saturate(1.4);
   -webkit-backdrop-filter: blur(20px) saturate(1.4);
@@ -28,8 +30,8 @@ const Nav = styled.nav`
 `;
 
 const Logo = styled(Link)`
-  font-family: "JetBrains Mono", monospace;
-  font-size: 1.25rem;
+  font-family: ${({ theme }) => theme.fonts.base};
+  font-size: ${({ theme }) => theme.fontSizes.xl};
   font-weight: 700;
   color: ${({ theme }) => theme.colors.text};
   text-decoration: none;
@@ -48,7 +50,7 @@ const Logo = styled(Link)`
   }
 
   @media (max-width: 480px) {
-    font-size: 1.1rem;
+    font-size: ${({ theme }) => theme.fontSizes.lg};
   }
 `;
 
@@ -62,14 +64,14 @@ const LogoMark = styled.span`
   background: ${({ theme }) => theme.gradients.accent};
   color: #fff;
   font-weight: 800;
-  font-size: 0.85rem;
+  font-size: ${({ theme }) => theme.fontSizes.sm};
   margin-right: 8px;
-  font-family: "JetBrains Mono", monospace;
+  font-family: ${({ theme }) => theme.fonts.base};
 
   @media (max-width: 480px) {
     width: 28px;
     height: 28px;
-    font-size: 0.78rem;
+    font-size: ${({ theme }) => theme.fontSizes.xs};
     margin-right: 6px;
   }
 `;
@@ -130,9 +132,9 @@ const DrawerHeader = styled.div`
 `;
 
 const DrawerTitle = styled.span`
-  font-family: "JetBrains Mono", monospace;
+  font-family: ${({ theme }) => theme.fonts.base};
   font-weight: 700;
-  font-size: 1rem;
+  font-size: ${({ theme }) => theme.fontSizes.base};
   color: ${({ theme }) => theme.colors.text};
 `;
 
@@ -158,14 +160,14 @@ const DrawerCloseBtn = styled.button`
 const activeNavStyle = css`
   background: ${({ theme }) => theme.colors.primary};
   color: #fff;
-  box-shadow: 0 2px 8px hsla(160, 60%, 45%, 0.25);
+  box-shadow: 0 2px 8px hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.25);
 `;
 
 const NavLink = styled(Link)<{ $active?: boolean }>`
   color: ${({ theme }) => theme.colors.textSecondary};
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.88rem;
+  font-size: ${({ theme }) => theme.fontSizes.sm};
   padding: 0.45rem 1rem;
   border-radius: 50px;
   transition: all 0.25s ease;
@@ -184,7 +186,7 @@ const NavLink = styled(Link)<{ $active?: boolean }>`
     width: 100%;
     text-align: left;
     padding: 0.85rem 1.25rem;
-    font-size: 0.95rem;
+    font-size: ${({ theme }) => theme.fontSizes.md};
     border-radius: 12px;
   }
 `;
@@ -314,6 +316,7 @@ export const Header = () => {
         </NavCenter>
 
         <RightGroup>
+          <ThemeCustomizer />
           <ThemeButton onClick={toggle} aria-label="Toggle theme">
             {theme === "light" ? <FiMoon /> : <FiSun />}
           </ThemeButton>

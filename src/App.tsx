@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import {
   BrowserRouter,
   Routes,
@@ -8,12 +9,15 @@ import {
 import { ThemeProvider } from "./components/theme/ThemeProvider";
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
-import { Home } from "./pages/Home";
-import { Blog } from "./pages/Blog";
-import { Post } from "./pages/Post";
-import { About } from "./pages/About";
-import { Login } from "./pages/Login";
-import { Register } from "./pages/Register";
+
+const Home = lazy(() => import("./pages/Home").then((m) => ({ default: m.Home })));
+const Blog = lazy(() => import("./pages/Blog").then((m) => ({ default: m.Blog })));
+const Post = lazy(() => import("./pages/Post").then((m) => ({ default: m.Post })));
+const About = lazy(() => import("./pages/About").then((m) => ({ default: m.About })));
+const Login = lazy(() => import("./pages/Login").then((m) => ({ default: m.Login })));
+const Register = lazy(() =>
+  import("./pages/Register").then((m) => ({ default: m.Register })),
+);
 
 const LegacyPrefixRedirect = () => {
   const location = useLocation();
@@ -36,6 +40,7 @@ function App() {
         >
           <Header />
           <main style={{ flex: 1 }}>
+            <Suspense fallback={null}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/blog" element={<Blog />} />
@@ -47,6 +52,7 @@ function App() {
               <Route path="/Blog/*" element={<LegacyPrefixRedirect />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
+            </Suspense>
           </main>
           <Footer />
         </div>

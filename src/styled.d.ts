@@ -2,6 +2,15 @@ import "styled-components";
 
 declare module "styled-components" {
   export interface DefaultTheme {
+    fonts: { base: string; mono: string };
+    fontSizes: {
+      xs: string;
+      sm: string;
+      md: string;
+      base: string;
+      lg: string;
+      xl: string;
+    };
     colors: {
       background: string;
       backgroundAlt: string;
