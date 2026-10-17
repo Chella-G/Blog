@@ -1,4 +1,4 @@
-import{C as e,S as t,a as n,b as r,c as i,g as a,r as o,x as s}from"./index-CZzt6m4c.js";import{t as c}from"./Container-Px4YBPWS.js";import{r as l}from"./formatDate-GaSx3WRi.js";import{t as u}from"./PostCard-BkjRHGZ2.js";var d=r(),f=s`
+import{_ as e,a as t,b as n,c as r,m as i,r as a,v as o,y as s}from"./index-vEynFqXR.js";import{t as c}from"./Container-B746gcQg.js";import{r as l}from"./formatDate-BJZxjRNI.js";import{t as u}from"./PostCard-F8BnnhBo.js";var d=e(),f=o`
   from {
     opacity: 0;
     transform: translateY(30px);
@@ -7,13 +7,13 @@ import{C as e,S as t,a as n,b as r,c as i,g as a,r as o,x as s}from"./index-CZzt
     opacity: 1;
     transform: translateY(0);
   }
-`,p=s`
+`,p=o`
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
-`,m=s`
+`,m=o`
   0%, 100% { box-shadow: 0 0 20px hsla(160, 60%, 45%, 0.15); }
   50% { box-shadow: 0 0 40px hsla(160, 60%, 45%, 0.3); }
-`,h=t.section`
+`,h=s.section`
   min-height: 85vh;
   display: flex;
   align-items: center;
@@ -46,11 +46,11 @@ import{C as e,S as t,a as n,b as r,c as i,g as a,r as o,x as s}from"./index-CZzt
     background-size: 80px 80px;
     opacity: 0.3;
   }
-`,g=t.div`
+`,g=s.div`
   position: relative;
   z-index: 1;
   animation: ${f} 0.8s ease-out;
-`,_=t.div`
+`,_=s.div`
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -62,13 +62,13 @@ import{C as e,S as t,a as n,b as r,c as i,g as a,r as o,x as s}from"./index-CZzt
   color: ${({theme:e})=>e.colors.textSecondary};
   margin-bottom: 2rem;
   animation: ${f} 0.8s ease-out 0.1s both;
-`,v=t.span`
+`,v=s.span`
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: ${({theme:e})=>e.colors.primary};
   animation: ${m} 2s ease-in-out infinite;
-`,y=t.h1`
+`,y=s.h1`
   font-family: "JetBrains Mono", monospace;
   font-size: clamp(2.2rem, 7vw, 4rem);
   font-weight: 800;
@@ -87,20 +87,20 @@ import{C as e,S as t,a as n,b as r,c as i,g as a,r as o,x as s}from"./index-CZzt
   .secondary {
     color: ${({theme:e})=>e.colors.secondary};
   }
-`,b=t.p`
+`,b=s.p`
   font-size: clamp(1rem, 2.5vw, 1.15rem);
   color: ${({theme:e})=>e.colors.textSecondary};
   max-width: 550px;
   margin: 0 auto 2.5rem;
   line-height: 1.7;
   animation: ${f} 0.8s ease-out 0.3s both;
-`,x=t.div`
+`,x=s.div`
   display: flex;
   gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
   animation: ${f} 0.8s ease-out 0.5s both;
-`,S=t(e)`
+`,S=s(n)`
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -117,7 +117,7 @@ import{C as e,S as t,a as n,b as r,c as i,g as a,r as o,x as s}from"./index-CZzt
     transform: translateY(-2px);
     box-shadow: ${({theme:e})=>e.shadows.glowStrong};
   }
-`,C=t(e)`
+`,C=s(n)`
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -136,7 +136,7 @@ import{C as e,S as t,a as n,b as r,c as i,g as a,r as o,x as s}from"./index-CZzt
     background: ${({theme:e})=>e.colors.surface};
     transform: translateY(-2px);
   }
-`,w=t.div`
+`,w=s.div`
   position: absolute;
   width: 300px;
   height: 300px;
@@ -158,13 +158,13 @@ import{C as e,S as t,a as n,b as r,c as i,g as a,r as o,x as s}from"./index-CZzt
     right: 10%;
     animation: ${p} 10s ease-in-out infinite reverse;
   }
-`,T=t.section`
+`,T=s.section`
   padding: 4rem 0;
 
   @media (max-width: 768px) {
     padding: 2.5rem 0;
   }
-`,E=t.div`
+`,E=s.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -175,7 +175,7 @@ import{C as e,S as t,a as n,b as r,c as i,g as a,r as o,x as s}from"./index-CZzt
   @media (max-width: 768px) {
     margin-bottom: 1.5rem;
   }
-`,D=t.h2`
+`,D=s.h2`
   font-size: clamp(1.4rem, 4vw, 1.75rem);
   font-weight: 800;
   color: ${({theme:e})=>e.colors.text};
@@ -185,7 +185,7 @@ import{C as e,S as t,a as n,b as r,c as i,g as a,r as o,x as s}from"./index-CZzt
   .accent {
     color: ${({theme:e})=>e.colors.primary};
   }
-`,O=t(e)`
+`,O=s(n)`
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -198,10 +198,10 @@ import{C as e,S as t,a as n,b as r,c as i,g as a,r as o,x as s}from"./index-CZzt
   &:hover {
     gap: 10px;
   }
-`,k=t.div`
+`,k=s.div`
   display: flex;
   flex-direction: column;
-`,A=t.div`
+`,A=s.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
   gap: 1.25rem;
@@ -212,7 +212,7 @@ import{C as e,S as t,a as n,b as r,c as i,g as a,r as o,x as s}from"./index-CZzt
     gap: 1rem;
     margin-top: 1.5rem;
   }
-`,j=t.div`
+`,j=s.div`
   background: ${({theme:e})=>e.colors.surface};
   backdrop-filter: blur(8px);
   border: 1px solid ${({theme:e})=>e.colors.border};
@@ -225,7 +225,7 @@ import{C as e,S as t,a as n,b as r,c as i,g as a,r as o,x as s}from"./index-CZzt
     box-shadow: ${({theme:e})=>e.shadows.elevationHover};
     border-color: ${({theme:e})=>e.colors.borderHover};
   }
-`,M=t.div`
+`,M=s.div`
   width: 48px;
   height: 48px;
   border-radius: 16px;
@@ -236,17 +236,17 @@ import{C as e,S as t,a as n,b as r,c as i,g as a,r as o,x as s}from"./index-CZzt
   justify-content: center;
   margin-bottom: 1rem;
   font-size: 1.3rem;
-`,N=t.h3`
+`,N=s.h3`
   font-size: 1rem;
   font-weight: 700;
   color: ${({theme:e})=>e.colors.text};
   margin: 0 0 0.5rem;
-`,P=t.p`
+`,P=s.p`
   font-size: 0.88rem;
   color: ${({theme:e})=>e.colors.muted};
   margin: 0;
   line-height: 1.6;
-`,F=t.div`
+`,F=s.div`
   display: flex;
   justify-content: center;
   gap: 3rem;
@@ -258,15 +258,15 @@ import{C as e,S as t,a as n,b as r,c as i,g as a,r as o,x as s}from"./index-CZzt
     gap: 1.5rem 2rem;
     padding: 1.5rem 0;
   }
-`,I=t.div`
+`,I=s.div`
   text-align: center;
-`,L=t.div`
+`,L=s.div`
   font-family: "JetBrains Mono", monospace;
   font-size: 2rem;
   font-weight: 800;
   color: ${({theme:e})=>e.colors.primary};
-`,R=t.div`
+`,R=s.div`
   font-size: 0.85rem;
   color: ${({theme:e})=>e.colors.muted};
   margin-top: 0.25rem;
-`,z=()=>{let{data:e,loading:t}=l({limit:3});return(0,d.jsxs)(d.Fragment,{children:[(0,d.jsxs)(h,{children:[(0,d.jsx)(w,{className:`green`}),(0,d.jsx)(w,{className:`purple`}),(0,d.jsxs)(g,{children:[(0,d.jsxs)(_,{children:[(0,d.jsx)(v,{}),`Available for work`]}),(0,d.jsxs)(y,{children:[(0,d.jsx)(`span`,{className:`highlight`,children:`Thoughts`}),`,`,` `,(0,d.jsx)(`span`,{className:`secondary`,children:`Ideas`}),(0,d.jsx)(`br`,{}),`& Code`]}),(0,d.jsx)(b,{children:`A place where I share my journey through software engineering, clean code practices, and modern web development.`}),(0,d.jsxs)(x,{children:[(0,d.jsxs)(S,{to:`/blog`,children:[`Read the Blog `,(0,d.jsx)(o,{})]}),(0,d.jsx)(C,{to:`/about`,children:`About Me`})]})]})]}),(0,d.jsxs)(c,{children:[(0,d.jsxs)(F,{children:[(0,d.jsxs)(I,{children:[(0,d.jsx)(L,{children:`6+`}),(0,d.jsx)(R,{children:`Articles`})]}),(0,d.jsxs)(I,{children:[(0,d.jsx)(L,{children:`5+`}),(0,d.jsx)(R,{children:`Topics`})]}),(0,d.jsxs)(I,{children:[(0,d.jsx)(L,{children:`∞`}),(0,d.jsx)(R,{children:`Learning`})]})]}),(0,d.jsxs)(T,{children:[(0,d.jsxs)(E,{children:[(0,d.jsxs)(D,{children:[`Latest `,(0,d.jsx)(`span`,{className:`accent`,children:`Posts`})]}),(0,d.jsxs)(O,{to:`/blog`,children:[`View all posts `,(0,d.jsx)(o,{size:16})]})]}),t?(0,d.jsx)(`p`,{style:{textAlign:`center`},children:`Loading…`}):(0,d.jsx)(k,{children:e.map(e=>(0,d.jsx)(u,{post:e},e.id))})]}),(0,d.jsxs)(T,{children:[(0,d.jsxs)(D,{style:{textAlign:`center`,marginBottom:`0.5rem`},children:[`What You'll `,(0,d.jsx)(`span`,{className:`accent`,children:`Find`}),` Here`]}),(0,d.jsx)(`p`,{style:{textAlign:`center`,maxWidth:`500px`,margin:`0 auto`,fontSize:`1rem`},children:`Dive into topics I'm passionate about`}),(0,d.jsxs)(A,{children:[(0,d.jsxs)(j,{children:[(0,d.jsx)(M,{$color:`green`,children:(0,d.jsx)(i,{})}),(0,d.jsx)(N,{children:`Clean Code`}),(0,d.jsx)(P,{children:`Best practices and patterns for writing maintainable, readable software.`})]}),(0,d.jsxs)(j,{children:[(0,d.jsx)(M,{$color:`purple`,children:(0,d.jsx)(n,{})}),(0,d.jsx)(N,{children:`Tutorials`}),(0,d.jsx)(P,{children:`Step-by-step guides on modern tooling.`})]}),(0,d.jsxs)(j,{children:[(0,d.jsx)(M,{$color:`gold`,children:(0,d.jsx)(a,{})}),(0,d.jsx)(N,{children:`Dev Insights`}),(0,d.jsx)(P,{children:`Thoughts on architecture, developer productivity, and career growth.`})]})]})]})]})]})};export{z as Home};
+`,z=()=>{let{data:e,loading:n}=l({limit:3});return(0,d.jsxs)(d.Fragment,{children:[(0,d.jsxs)(h,{children:[(0,d.jsx)(w,{className:`green`}),(0,d.jsx)(w,{className:`purple`}),(0,d.jsxs)(g,{children:[(0,d.jsxs)(_,{children:[(0,d.jsx)(v,{}),`Available for work`]}),(0,d.jsxs)(y,{children:[(0,d.jsx)(`span`,{className:`highlight`,children:`Thoughts`}),`,`,` `,(0,d.jsx)(`span`,{className:`secondary`,children:`Ideas`}),(0,d.jsx)(`br`,{}),`& Code`]}),(0,d.jsx)(b,{children:`A place where I share my journey through software engineering, clean code practices, and modern web development.`}),(0,d.jsxs)(x,{children:[(0,d.jsxs)(S,{to:`/blog`,children:[`Read the Blog `,(0,d.jsx)(a,{})]}),(0,d.jsx)(C,{to:`/about`,children:`About Me`})]})]})]}),(0,d.jsxs)(c,{children:[(0,d.jsxs)(F,{children:[(0,d.jsxs)(I,{children:[(0,d.jsx)(L,{children:`6+`}),(0,d.jsx)(R,{children:`Articles`})]}),(0,d.jsxs)(I,{children:[(0,d.jsx)(L,{children:`5+`}),(0,d.jsx)(R,{children:`Topics`})]}),(0,d.jsxs)(I,{children:[(0,d.jsx)(L,{children:`∞`}),(0,d.jsx)(R,{children:`Learning`})]})]}),(0,d.jsxs)(T,{children:[(0,d.jsxs)(E,{children:[(0,d.jsxs)(D,{children:[`Latest `,(0,d.jsx)(`span`,{className:`accent`,children:`Posts`})]}),(0,d.jsxs)(O,{to:`/blog`,children:[`View all posts `,(0,d.jsx)(a,{size:16})]})]}),n?(0,d.jsx)(`p`,{style:{textAlign:`center`},children:`Loading…`}):(0,d.jsx)(k,{children:e.map(e=>(0,d.jsx)(u,{post:e},e.id))})]}),(0,d.jsxs)(T,{children:[(0,d.jsxs)(D,{style:{textAlign:`center`,marginBottom:`0.5rem`},children:[`What You'll `,(0,d.jsx)(`span`,{className:`accent`,children:`Find`}),` Here`]}),(0,d.jsx)(`p`,{style:{textAlign:`center`,maxWidth:`500px`,margin:`0 auto`,fontSize:`1rem`},children:`Dive into topics I'm passionate about`}),(0,d.jsxs)(A,{children:[(0,d.jsxs)(j,{children:[(0,d.jsx)(M,{$color:`green`,children:(0,d.jsx)(r,{})}),(0,d.jsx)(N,{children:`Clean Code`}),(0,d.jsx)(P,{children:`Best practices and patterns for writing maintainable, readable software.`})]}),(0,d.jsxs)(j,{children:[(0,d.jsx)(M,{$color:`purple`,children:(0,d.jsx)(t,{})}),(0,d.jsx)(N,{children:`Tutorials`}),(0,d.jsx)(P,{children:`Step-by-step guides on modern tooling.`})]}),(0,d.jsxs)(j,{children:[(0,d.jsx)(M,{$color:`gold`,children:(0,d.jsx)(i,{})}),(0,d.jsx)(N,{children:`Dev Insights`}),(0,d.jsx)(P,{children:`Thoughts on architecture, developer productivity, and career growth.`})]})]})]})]})]})};export{z as Home};

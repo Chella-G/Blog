@@ -1,13 +1,13 @@
-import{C as e,O as t,S as n,T as r,b as i,f as a,p as o,r as s,v as c,x as l}from"./index-CZzt6m4c.js";import{t as u}from"./Container-Px4YBPWS.js";var d=t(r(),1),f=i(),p=l`
+import{S as e,T as t,_ as n,b as r,d as i,h as a,r as o,u as s,v as c,y as l}from"./index-vEynFqXR.js";import{t as u}from"./Container-B746gcQg.js";var d=t(e(),1),f=n(),p=c`
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
-`,m=n.div`
+`,m=l.div`
   min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1.5rem 1rem;
-`,h=n.div`
+`,h=l.div`
   width: 100%;
   max-width: 420px;
   background: ${({theme:e})=>e.colors.surface};
@@ -22,7 +22,7 @@ import{C as e,O as t,S as n,T as r,b as i,f as a,p as o,r as s,v as c,x as l}fro
     padding: 1.75rem 1.25rem;
     border-radius: 20px;
   }
-`,g=n.div`
+`,g=l.div`
   width: 48px;
   height: 48px;
   border-radius: 18px;
@@ -36,31 +36,31 @@ import{C as e,O as t,S as n,T as r,b as i,f as a,p as o,r as s,v as c,x as l}fro
   justify-content: center;
   margin: 0 auto 0.5rem;
   box-shadow: ${({theme:e})=>e.shadows.glow};
-`,_=n.h1`
+`,_=l.h1`
   font-size: 1.6rem;
   font-weight: 800;
   color: ${({theme:e})=>e.colors.text};
   margin: 0 0 0.4rem;
   text-align: center;
-`,v=n.p`
+`,v=l.p`
   color: ${({theme:e})=>e.colors.muted};
   text-align: center;
   margin: 0 0 0.5rem;
   font-size: 0.92rem;
-`,y=n.form`
+`,y=l.form`
   display: flex;
   flex-direction: column;
   gap: 1.15rem;
-`,b=n.div`
+`,b=l.div`
   position: relative;
-`,x=n.div`
+`,x=l.div`
   position: absolute;
   left: 1rem;
   top: 50%;
   transform: translateY(-50%);
   color: ${({theme:e})=>e.colors.muted};
   display: flex;
-`,S=n.input`
+`,S=l.input`
   width: 100%;
   padding: 0.8rem 1rem 0.8rem 2.75rem;
   border: 1px solid ${({theme:e})=>e.colors.border};
@@ -85,7 +85,7 @@ import{C as e,O as t,S as n,T as r,b as i,f as a,p as o,r as s,v as c,x as l}fro
   @media (min-width: 769px) {
     font-size: 0.92rem;
   }
-`,C=n.button`
+`,C=l.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -105,7 +105,7 @@ import{C as e,O as t,S as n,T as r,b as i,f as a,p as o,r as s,v as c,x as l}fro
     transform: translateY(-2px);
     box-shadow: ${({theme:e})=>e.shadows.glowStrong};
   }
-`,w=n.p`
+`,w=l.p`
   text-align: center;
   color: ${({theme:e})=>e.colors.muted};
   font-size: 0.88rem;
@@ -120,4 +120,4 @@ import{C as e,O as t,S as n,T as r,b as i,f as a,p as o,r as s,v as c,x as l}fro
       text-decoration: underline;
     }
   }
-`,T=()=>{let[t,n]=(0,d.useState)(``),[r,i]=(0,d.useState)(``),[l,p]=(0,d.useState)(``),[T,E]=(0,d.useState)(``);return(0,f.jsx)(u,{children:(0,f.jsx)(m,{children:(0,f.jsxs)(h,{children:[(0,f.jsx)(g,{children:`A`}),(0,f.jsx)(_,{children:`Create Account`}),(0,f.jsx)(v,{children:`Join the community`}),(0,f.jsxs)(y,{onSubmit:e=>{if(e.preventDefault(),l!==T){alert(`Passwords do not match!`);return}console.log(`Register attempt:`,{name:t,email:r,password:l}),alert(`Registration will be connected once the Go backend is ready!`)},children:[(0,f.jsxs)(b,{children:[(0,f.jsx)(x,{children:(0,f.jsx)(c,{size:16})}),(0,f.jsx)(S,{type:`text`,placeholder:`Full name`,value:t,onChange:e=>n(e.target.value),required:!0})]}),(0,f.jsxs)(b,{children:[(0,f.jsx)(x,{children:(0,f.jsx)(o,{size:16})}),(0,f.jsx)(S,{type:`email`,placeholder:`Email address`,value:r,onChange:e=>i(e.target.value),required:!0})]}),(0,f.jsxs)(b,{children:[(0,f.jsx)(x,{children:(0,f.jsx)(a,{size:16})}),(0,f.jsx)(S,{type:`password`,placeholder:`Password`,value:l,onChange:e=>p(e.target.value),required:!0,minLength:6})]}),(0,f.jsxs)(b,{children:[(0,f.jsx)(x,{children:(0,f.jsx)(a,{size:16})}),(0,f.jsx)(S,{type:`password`,placeholder:`Confirm password`,value:T,onChange:e=>E(e.target.value),required:!0,minLength:6})]}),(0,f.jsxs)(C,{type:`submit`,children:[`Create Account `,(0,f.jsx)(s,{size:16})]})]}),(0,f.jsxs)(w,{children:[`Already have an account? `,(0,f.jsx)(e,{to:`/login`,children:`Sign in`})]})]})})})};export{T as Register};
+`,T=()=>{let[e,t]=(0,d.useState)(``),[n,c]=(0,d.useState)(``),[l,p]=(0,d.useState)(``),[T,E]=(0,d.useState)(``);return(0,f.jsx)(u,{children:(0,f.jsx)(m,{children:(0,f.jsxs)(h,{children:[(0,f.jsx)(g,{children:`A`}),(0,f.jsx)(_,{children:`Create Account`}),(0,f.jsx)(v,{children:`Join the community`}),(0,f.jsxs)(y,{onSubmit:t=>{if(t.preventDefault(),l!==T){alert(`Passwords do not match!`);return}console.log(`Register attempt:`,{name:e,email:n,password:l}),alert(`Registration will be connected once the Go backend is ready!`)},children:[(0,f.jsxs)(b,{children:[(0,f.jsx)(x,{children:(0,f.jsx)(a,{size:16})}),(0,f.jsx)(S,{type:`text`,placeholder:`Full name`,value:e,onChange:e=>t(e.target.value),required:!0})]}),(0,f.jsxs)(b,{children:[(0,f.jsx)(x,{children:(0,f.jsx)(i,{size:16})}),(0,f.jsx)(S,{type:`email`,placeholder:`Email address`,value:n,onChange:e=>c(e.target.value),required:!0})]}),(0,f.jsxs)(b,{children:[(0,f.jsx)(x,{children:(0,f.jsx)(s,{size:16})}),(0,f.jsx)(S,{type:`password`,placeholder:`Password`,value:l,onChange:e=>p(e.target.value),required:!0,minLength:6})]}),(0,f.jsxs)(b,{children:[(0,f.jsx)(x,{children:(0,f.jsx)(s,{size:16})}),(0,f.jsx)(S,{type:`password`,placeholder:`Confirm password`,value:T,onChange:e=>E(e.target.value),required:!0,minLength:6})]}),(0,f.jsxs)(C,{type:`submit`,children:[`Create Account `,(0,f.jsx)(o,{size:16})]})]}),(0,f.jsxs)(w,{children:[`Already have an account? `,(0,f.jsx)(r,{to:`/login`,children:`Sign in`})]})]})})})};export{T as Register};

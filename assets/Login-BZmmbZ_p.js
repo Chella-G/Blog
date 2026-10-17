@@ -1,13 +1,13 @@
-import{C as e,O as t,S as n,T as r,b as i,f as a,p as o,r as s,x as c}from"./index-CZzt6m4c.js";import{t as l}from"./Container-Px4YBPWS.js";var u=t(r(),1),d=i(),f=c`
+import{S as e,T as t,_ as n,b as r,d as i,r as a,u as o,v as s,y as c}from"./index-vEynFqXR.js";import{t as l}from"./Container-B746gcQg.js";var u=t(e(),1),d=n(),f=s`
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
-`,p=n.div`
+`,p=c.div`
   min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1.5rem 1rem;
-`,m=n.div`
+`,m=c.div`
   width: 100%;
   max-width: 420px;
   background: ${({theme:e})=>e.colors.surface};
@@ -22,7 +22,7 @@ import{C as e,O as t,S as n,T as r,b as i,f as a,p as o,r as s,x as c}from"./ind
     padding: 1.75rem 1.25rem;
     border-radius: 20px;
   }
-`,h=n.div`
+`,h=c.div`
   width: 48px;
   height: 48px;
   border-radius: 18px;
@@ -36,31 +36,31 @@ import{C as e,O as t,S as n,T as r,b as i,f as a,p as o,r as s,x as c}from"./ind
   justify-content: center;
   margin: 0 auto 0.5rem;
   box-shadow: ${({theme:e})=>e.shadows.glow};
-`,g=n.h1`
+`,g=c.h1`
   font-size: 1.6rem;
   font-weight: 800;
   color: ${({theme:e})=>e.colors.text};
   margin: 0 0 0.4rem;
   text-align: center;
-`,_=n.p`
+`,_=c.p`
   color: ${({theme:e})=>e.colors.muted};
   text-align: center;
   margin: 0 0 0.5rem;
   font-size: 0.92rem;
-`,v=n.form`
+`,v=c.form`
   display: flex;
   flex-direction: column;
   gap: 1.15rem;
-`,y=n.div`
+`,y=c.div`
   position: relative;
-`,b=n.div`
+`,b=c.div`
   position: absolute;
   left: 1rem;
   top: 50%;
   transform: translateY(-50%);
   color: ${({theme:e})=>e.colors.muted};
   display: flex;
-`,x=n.input`
+`,x=c.input`
   width: 100%;
   padding: 0.8rem 1rem 0.8rem 2.75rem;
   border: 1px solid ${({theme:e})=>e.colors.border};
@@ -85,7 +85,7 @@ import{C as e,O as t,S as n,T as r,b as i,f as a,p as o,r as s,x as c}from"./ind
   @media (min-width: 769px) {
     font-size: 0.92rem;
   }
-`,S=n.button`
+`,S=c.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -111,7 +111,7 @@ import{C as e,O as t,S as n,T as r,b as i,f as a,p as o,r as s,x as c}from"./ind
     cursor: not-allowed;
     transform: none;
   }
-`,C=n.p`
+`,C=c.p`
   text-align: center;
   color: ${({theme:e})=>e.colors.muted};
   font-size: 0.88rem;
@@ -126,4 +126,4 @@ import{C as e,O as t,S as n,T as r,b as i,f as a,p as o,r as s,x as c}from"./ind
       text-decoration: underline;
     }
   }
-`,w=()=>{let[t,n]=(0,u.useState)(``),[r,i]=(0,u.useState)(``);return(0,d.jsx)(l,{children:(0,d.jsx)(p,{children:(0,d.jsxs)(m,{children:[(0,d.jsx)(h,{children:`A`}),(0,d.jsx)(g,{children:`Welcome Back`}),(0,d.jsx)(_,{children:`Sign in to your account`}),(0,d.jsxs)(v,{onSubmit:e=>{e.preventDefault(),console.log(`Login attempt:`,{email:t,password:r}),alert(`Login functionality will be connected once the Go backend is ready!`)},children:[(0,d.jsxs)(y,{children:[(0,d.jsx)(b,{children:(0,d.jsx)(o,{size:16})}),(0,d.jsx)(x,{type:`email`,placeholder:`Email address`,value:t,onChange:e=>n(e.target.value),required:!0})]}),(0,d.jsxs)(y,{children:[(0,d.jsx)(b,{children:(0,d.jsx)(a,{size:16})}),(0,d.jsx)(x,{type:`password`,placeholder:`Password`,value:r,onChange:e=>i(e.target.value),required:!0})]}),(0,d.jsxs)(S,{type:`submit`,children:[`Sign In `,(0,d.jsx)(s,{size:16})]})]}),(0,d.jsxs)(C,{children:[`Don't have an account? `,(0,d.jsx)(e,{to:`/register`,children:`Sign up`})]})]})})})};export{w as Login};
+`,w=()=>{let[e,t]=(0,u.useState)(``),[n,s]=(0,u.useState)(``);return(0,d.jsx)(l,{children:(0,d.jsx)(p,{children:(0,d.jsxs)(m,{children:[(0,d.jsx)(h,{children:`A`}),(0,d.jsx)(g,{children:`Welcome Back`}),(0,d.jsx)(_,{children:`Sign in to your account`}),(0,d.jsxs)(v,{onSubmit:t=>{t.preventDefault(),console.log(`Login attempt:`,{email:e,password:n}),alert(`Login functionality will be connected once the Go backend is ready!`)},children:[(0,d.jsxs)(y,{children:[(0,d.jsx)(b,{children:(0,d.jsx)(i,{size:16})}),(0,d.jsx)(x,{type:`email`,placeholder:`Email address`,value:e,onChange:e=>t(e.target.value),required:!0})]}),(0,d.jsxs)(y,{children:[(0,d.jsx)(b,{children:(0,d.jsx)(o,{size:16})}),(0,d.jsx)(x,{type:`password`,placeholder:`Password`,value:n,onChange:e=>s(e.target.value),required:!0})]}),(0,d.jsxs)(S,{type:`submit`,children:[`Sign In `,(0,d.jsx)(a,{size:16})]})]}),(0,d.jsxs)(C,{children:[`Don't have an account? `,(0,d.jsx)(r,{to:`/register`,children:`Sign up`})]})]})})})};export{w as Login};
