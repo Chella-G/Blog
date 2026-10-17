@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { Container } from "../components/layout/Container";
-import { FiGithub, FiLinkedin, FiTwitter, FiMail, FiMapPin } from "react-icons/fi";
+import { FiMapPin } from "react-icons/fi";
 
 const fadeUp = keyframes`
   from { opacity: 0; transform: translateY(20px); }
@@ -138,35 +138,6 @@ const Location = styled.div`
   margin-bottom: 0.5rem;
 `;
 
-const SocialRow = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 0.75rem;
-`;
-
-const SocialLink = styled.a`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 50px;
-  background: ${({ theme }) => theme.colors.surface};
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  color: ${({ theme }) => theme.colors.textSecondary};
-  text-decoration: none;
-  transition: all 0.25s;
-  font-size: 1.1rem;
-
-  &:hover {
-    background: ${({ theme }) => theme.colors.primary};
-    color: #fff;
-    border-color: ${({ theme }) => theme.colors.primary};
-    transform: translateY(-3px);
-    box-shadow: ${({ theme }) => theme.shadows.glow};
-  }
-`;
-
 const Section = styled.section`
   margin-bottom: 0.5rem;
 `;
@@ -243,38 +214,6 @@ export const About = () => (
           <FiMapPin size={14} />
           India
         </Location>
-        <SocialRow>
-          <SocialLink
-            href="https://github.com/anony"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-          >
-            <FiGithub />
-          </SocialLink>
-          <SocialLink
-            href="https://linkedin.com/in/anony"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-          >
-            <FiLinkedin />
-          </SocialLink>
-          <SocialLink
-            href="https://twitter.com/anony"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Twitter"
-          >
-            <FiTwitter />
-          </SocialLink>
-          <SocialLink
-            href="mailto:anony@example.com"
-            aria-label="Email"
-          >
-            <FiMail />
-          </SocialLink>
-        </SocialRow>
       </Hero>
 
       <ContentBlock>
@@ -295,18 +234,18 @@ export const About = () => (
         <Section>
           <SectionTitle>Skills & <span className="accent">Technologies</span></SectionTitle>
           <SkillsGrid>
+            <Skill>HTML</Skill>
+            <Skill>CSS / Styled Components</Skill>  
             <Skill>React</Skill>
             <Skill>TypeScript</Skill>
-            <Skill>Go</Skill>
+            {/* <Skill>Go</Skill> */}
             <Skill>Node.js</Skill>
+            <Skill>Python</Skill>
             <Skill>PostgreSQL</Skill>
-            <Skill>Docker</Skill>
+            {/* <Skill>Docker</Skill> */}
             <Skill>Git</Skill>
             <Skill>REST APIs</Skill>
-            <Skill>CSS / Styled Components</Skill>
-            <Skill>Vite</Skill>
             <Skill>Linux</Skill>
-            <Skill>Python</Skill>
           </SkillsGrid>
         </Section>
 
@@ -314,8 +253,8 @@ export const About = () => (
           <SectionTitle>Get In <span className="accent">Touch</span></SectionTitle>
           <Text>
             Have a question, suggestion, or just want to say hello? Feel free
-            to reach out through any of the social links above or drop me an
-            email. I'd love to hear from you!
+            to reach out through the social links in the page rail or email me.
+            I'd love to hear from you!
           </Text>
         </Section>
       </ContentBlock>

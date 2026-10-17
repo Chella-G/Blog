@@ -82,11 +82,11 @@ const LogoMark = styled.span`
 const NavCenter = styled.div<{ $isOpen: boolean }>`
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  background: ${({ theme }) => theme.colors.surface};
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: 50px;
-  padding: 0.3rem;
+  gap: 0.25rem;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
 
   @media (max-width: 768px) {
     position: fixed;

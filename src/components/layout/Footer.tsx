@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { FiGithub, FiLinkedin, FiTwitter, FiHeart, FiMail } from "react-icons/fi";
+import { FiHeart } from "react-icons/fi";
+import { SocialLinks } from "./SocialLinks";
 
 const FooterWrapper = styled.footer`
   padding: 1.5rem 2rem 1rem;
@@ -54,34 +55,10 @@ const FooterDesc = styled.p`
   line-height: 1.6;
 `;
 
-const SocialLinks = styled.div`
+const FooterSocialLinks = styled.div`
   display: flex;
   justify-content: center;
-  gap: 0.75rem;
   margin-bottom: 0.5rem;
-`;
-
-const IconLink = styled.a`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50px;
-  background: ${({ theme }) => theme.colors.backgroundAlt};
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  color: ${({ theme }) => theme.colors.textSecondary};
-  text-decoration: none;
-  transition: all 0.25s ease;
-  font-size: 1.1rem;
-
-  &:hover {
-    background: ${({ theme }) => theme.colors.primary};
-    border-color: ${({ theme }) => theme.colors.primary};
-    color: #fff;
-    transform: translateY(-3px);
-    box-shadow: ${({ theme }) => theme.shadows.glow};
-  }
 `;
 
 const Divider = styled.div`
@@ -113,38 +90,9 @@ export const Footer = () => (
       <FooterDesc>
         Sharing thoughts on software engineering, clean code, and modern web development.
       </FooterDesc>
-      <SocialLinks>
-        <IconLink
-          href="https://github.com/anony"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="GitHub"
-        >
-          <FiGithub />
-        </IconLink>
-        <IconLink
-          href="https://linkedin.com/in/anony"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="LinkedIn"
-        >
-          <FiLinkedin />
-        </IconLink>
-        <IconLink
-          href="https://twitter.com/anony"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Twitter"
-        >
-          <FiTwitter />
-        </IconLink>
-        <IconLink
-          href="mailto:anony@example.com"
-          aria-label="Email"
-        >
-          <FiMail />
-        </IconLink>
-      </SocialLinks>
+      <FooterSocialLinks>
+        <SocialLinks />
+      </FooterSocialLinks>
       <Divider />
       <CopyText>
         &copy; {new Date().getFullYear()} Anony.blog — Made with{" "}

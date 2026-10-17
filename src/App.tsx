@@ -9,6 +9,7 @@ import {
 import { ThemeProvider } from "./components/theme/ThemeProvider";
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
+import { SocialRail } from "./components/layout/SocialLinks";
 
 const Home = lazy(() => import("./pages/Home").then((m) => ({ default: m.Home })));
 const Blog = lazy(() => import("./pages/Blog").then((m) => ({ default: m.Blog })));
@@ -39,6 +40,7 @@ function App() {
           }}
         >
           <Header />
+          <SocialRail />
           <main style={{ flex: 1 }}>
             <Suspense fallback={null}>
             <Routes>
