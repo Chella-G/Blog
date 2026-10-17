@@ -22,6 +22,9 @@ const Nav = styled.nav`
 
   @media (max-width: 768px) {
     padding: 0.6rem 1.25rem;
+    background: ${({ theme }) => theme.colors.background};
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
   @media (max-width: 480px) {
@@ -243,8 +246,7 @@ const Overlay = styled.div<{ $isOpen: boolean }>`
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(4px);
-    z-index: 1000;
+    z-index: 999;
   }
 `;
 

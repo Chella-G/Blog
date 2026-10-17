@@ -434,8 +434,7 @@ export const Home = () => {
               </FeatureIcon>
               <FeatureTitle>Tutorials</FeatureTitle>
               <FeatureDesc>
-                Step-by-step guides on React, Go, TypeScript, and
-                modern tooling.
+                Step-by-step guides on modern tooling.
               </FeatureDesc>
             </FeatureCard>
             <FeatureCard>
