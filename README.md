@@ -112,17 +112,35 @@ Put static images in `public/assets/` and refer to them from Markdown by their p
 ## Project structure
 
 ```text
-src/
-|-- components/
-|   |-- layout/       # Header, footer, social links, theme controls
-|   |-- post/         # Post cards, lists, and article view
-|   `-- theme/        # Theme provider, palettes, and settings
-|-- content/posts/    # Markdown article files
-|-- hooks/            # Post metadata and content loading
-|-- mocks/            # Local post metadata (posts.json)
-|-- pages/            # Home, Blog, Post, About, Login, Register
-|-- services/         # Axios API client
-`-- App.tsx           # Routes and shared page layout
+frontend/
+├── src/
+│   ├── App.tsx              (Root component, routes, layout)
+│   ├── main.tsx             (React entry point)
+│   ├── index.css            (Global styles, CSS variables)
+│   ├── pages/               (Route-based views)
+│   │   ├── Home.tsx         (Hero + featured posts + features grid)
+│   │   ├── Blog.tsx         (Post listing with search & category filters)
+│   │   ├── Post.tsx         (Single post view, dynamic content loader)
+│   │   ├── About.tsx        (Author bio, skills, contact)
+│   │   ├── Login.tsx        (Auth form, backend TODO)
+│   │   └── Register.tsx     (Auth form, backend TODO)
+│   ├── components/
+│   │   ├── layout/          (Header, Footer, Container, SocialLinks, ThemeCustomizer)
+│   │   ├── post/            (PostCard, PostList, PostDetail)
+│   │   └── theme/           (ThemeProvider, dark/light themes, themeSettings, tokens)
+│   ├── hooks/
+│   │   └── usePosts.ts      (Post fetching logic with mock data)
+│   ├── services/
+│   │   └── api.ts           (Axios instance + endpoint helpers)
+│   ├── content/posts/       (Markdown files for blog posts)
+│   ├── mocks/
+│   │   └── posts.json       (Mock post metadata)
+│   └── utils/
+│       └── formatDate.ts    (Date formatting utilities)
+├── public/                  (Static assets, favicons, 404 page)
+├── dist/                    (Build output)
+├── vite.config.ts           (Vite config with GitHub Pages base)
+└── tsconfig.json            (TypeScript strict config)
 ```
 
 ## Data and backend status
