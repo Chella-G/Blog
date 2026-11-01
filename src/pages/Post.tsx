@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components";
 import { usePost } from "../hooks/usePosts";
 import { PostDetail } from "../components/post/PostDetail";
 import { FiArrowLeft } from "react-icons/fi";
+import { SEO } from "../components/layout/SEO";
 
 const spin = keyframes`
   to { transform: rotate(360deg); }
@@ -112,6 +113,16 @@ export const Post = () => {
 
   return (
     <>
+      <SEO
+        title={`${post.title} | Anony.blog`}
+        description={post.excerpt || `Read ${post.title}, a practical guide by ${post.author.name}.`}
+        path={`/blog/${post.slug || post.id}`}
+        image={post.thumbnail || undefined}
+        type="article"
+        publishedAt={post.publishedAt}
+        author={post.author.name}
+        tags={post.tags.filter(Boolean)}
+      />
       <BackBar>
         <BackLink to="/blog">
           <FiArrowLeft /> All Posts

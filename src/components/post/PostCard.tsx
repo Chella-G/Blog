@@ -58,7 +58,7 @@ interface PostCardProps {
 
 export const PostCard = ({ post }: PostCardProps) => (
   <Item>
-    <ItemLink to={`/post/${post.id}`}>
+    <ItemLink to={`/blog/${post.slug || post.id}`}>
       <DateLine>{formatDate(post.publishedAt)}</DateLine>
       <Title>{post.title}</Title>
       {post.excerpt && <Excerpt>{post.excerpt}</Excerpt>}

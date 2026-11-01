@@ -4,6 +4,7 @@ import { usePosts } from "../hooks/usePosts";
 import { PostList } from "../components/post/PostList";
 import { Container } from "../components/layout/Container";
 import { FiSearch, FiX } from "react-icons/fi";
+import { SEO } from "../components/layout/SEO";
 
 const fadeUp = keyframes`
   from { opacity: 0; transform: translateY(20px); }
@@ -208,6 +209,11 @@ export const Blog = () => {
 
   return (
     <Container>
+      <SEO
+        title="Software Development Articles | Anony.blog"
+        description="Browse practical software development tutorials, web engineering guides, and notes on tools and technology."
+        path="/blog"
+      />
       <PageHeader>
         <TopRow>
           <TitleBlock>

@@ -1,6 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import { Container } from "../components/layout/Container";
 import { FiMapPin } from "react-icons/fi";
+import { SEO } from "../components/layout/SEO";
 
 const fadeUp = keyframes`
   from { opacity: 0; transform: translateY(20px); }
@@ -195,6 +196,11 @@ const Text = styled.p`
 
 export const About = () => (
   <Container>
+    <SEO
+      title="About | Anony.blog"
+      description="Learn about Anony.blog and explore articles on software engineering, web development, and technology."
+      path="/about"
+    />
     <PageWrapper>
       <Hero>
         <AvatarWrapper>

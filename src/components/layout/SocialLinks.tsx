@@ -83,7 +83,7 @@ export const SocialLinks = ({
     aria-label="Social links"
   >
     <SocialLink
-      href="https://github.com/anony"
+      href="https://github.com/Chella23"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="GitHub"
@@ -92,7 +92,7 @@ export const SocialLinks = ({
       <FiGithub />
     </SocialLink>
     <SocialLink
-      href="https://linkedin.com/in/anony"
+      href="https://linkedin.com/in/chella-g"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="LinkedIn"
@@ -101,7 +101,7 @@ export const SocialLinks = ({
       <FiLinkedin />
     </SocialLink>
     <SocialLink
-      href="https://twitter.com/anony"
+      href="https://twitter.com/"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Twitter"
@@ -109,7 +109,7 @@ export const SocialLinks = ({
     >
       <FiTwitter />
     </SocialLink>
-    <SocialLink href="mailto:anony@example.com" aria-label="Email" title="Email">
+    <SocialLink href="mailto:chellagovindaraj@gmail.com" aria-label="Email" title="Email">
       <FiMail />
     </SocialLink>
   </LinkList>

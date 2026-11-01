@@ -4,6 +4,7 @@ import { usePosts } from "../hooks/usePosts";
 import { PostCard } from "../components/post/PostCard";
 import { Container } from "../components/layout/Container";
 import { FiArrowRight, FiBook, FiCode, FiTerminal } from "react-icons/fi";
+import { SEO } from "../components/layout/SEO";
 
 const fadeUp = keyframes`
   from {
@@ -341,6 +342,11 @@ export const Home = () => {
 
   return (
     <>
+      <SEO
+        title="Anony.blog | Software Development Blog"
+        description="Practical tutorials and notes on software development, React, TypeScript, classroom technology, and building for the web."
+        path="/"
+      />
       <Hero>
         <HeroDecor className="green" />
         <HeroDecor className="purple" />

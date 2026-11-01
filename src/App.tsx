@@ -19,6 +19,11 @@ const Login = lazy(() => import("./pages/Login").then((m) => ({ default: m.Login
 const Register = lazy(() =>
   import("./pages/Register").then((m) => ({ default: m.Register })),
 );
+const LegacyPostRedirect = () => {
+  const location = useLocation();
+  const id = location.pathname.split("/").filter(Boolean).at(-1);
+  return <Navigate to={`/blog/${id || ""}${location.search}${location.hash}`} replace />;
+};
 
 const LegacyPrefixRedirect = () => {
   const location = useLocation();
@@ -46,7 +51,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/blog" element={<Blog />} />
-              <Route path="/post/:id" element={<Post />} />
+              <Route path="/blog/:id" element={<Post />} />
+              <Route path="/post/:id" element={<LegacyPostRedirect />} />
               <Route path="/about" element={<About />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
