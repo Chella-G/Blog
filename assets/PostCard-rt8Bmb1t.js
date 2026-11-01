@@ -1,14 +1,14 @@
-import{_ as e,b as t,y as n}from"./index-vEynFqXR.js";import{t as r}from"./formatDate-BJZxjRNI.js";var i=e(),a=n.article`
+import{b as e,v as t,x as n}from"./index-CltCT092.js";import{t as r}from"./formatDate-DVSfY8V-.js";var i=t(),a=e.article`
   padding: 1.35rem 0;
 
   & + & {
     border-top: 1px solid ${({theme:e})=>`${e.colors.border}80`};
   }
-`,o=n(t)`
+`,o=e(n)`
   text-decoration: none;
   color: inherit;
   display: block;
-`,s=n.time`
+`,s=e.time`
   display: block;
   font-size: 0.72rem;
   font-family: "JetBrains Mono", monospace;
@@ -16,7 +16,7 @@ import{_ as e,b as t,y as n}from"./index-vEynFqXR.js";import{t as r}from"./forma
   letter-spacing: 0.5px;
   text-transform: uppercase;
   margin-bottom: 0.35rem;
-`,c=n.h3`
+`,c=e.h3`
   font-size: 1.15rem;
   font-weight: 700;
   margin: 0;
@@ -27,7 +27,7 @@ import{_ as e,b as t,y as n}from"./index-vEynFqXR.js";import{t as r}from"./forma
   ${o}:hover & {
     color: ${({theme:e})=>e.colors.primary};
   }
-`,l=n.p`
+`,l=e.p`
   font-size: 0.85rem;
   color: ${({theme:e})=>e.colors.textSecondary};
   margin: 0.3rem 0 0;
@@ -37,4 +37,4 @@ import{_ as e,b as t,y as n}from"./index-vEynFqXR.js";import{t as r}from"./forma
   -webkit-box-orient: vertical;
   overflow: hidden;
   max-width: 640px;
-`,u=({post:e})=>(0,i.jsx)(a,{children:(0,i.jsxs)(o,{to:`/post/${e.id}`,children:[(0,i.jsx)(s,{children:r(e.publishedAt)}),(0,i.jsx)(c,{children:e.title}),e.excerpt&&(0,i.jsx)(l,{children:e.excerpt})]})});export{u as t};
+`,u=({post:e})=>(0,i.jsx)(a,{children:(0,i.jsxs)(o,{to:`/blog/${e.slug||e.id}`,children:[(0,i.jsx)(s,{children:r(e.publishedAt)}),(0,i.jsx)(c,{children:e.title}),e.excerpt&&(0,i.jsx)(l,{children:e.excerpt})]})});export{u as t};

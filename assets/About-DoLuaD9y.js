@@ -1,13 +1,13 @@
-import{_ as e,f as t,v as n,y as r}from"./index-vEynFqXR.js";import{t as i}from"./Container-B746gcQg.js";var a=e(),o=n`
+import{b as e,p as t,v as n,y as r}from"./index-CltCT092.js";import{t as i}from"./Container-uUY9frpK.js";import{t as a}from"./SEO-CIa-k4k_.js";var o=n(),s=r`
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
-`,s=r.div`
+`,c=e.div`
   padding: 2rem 0 2rem;
-  animation: ${o} 0.6s ease-out;
-`,c=r.div`
+  animation: ${s} 0.6s ease-out;
+`,l=e.div`
   text-align: center;
   margin-bottom: 0.5rem;
-`,l=r.div`
+`,u=e.div`
   position: relative;
   width: 130px;
   height: 130px;
@@ -17,7 +17,7 @@ import{_ as e,f as t,v as n,y as r}from"./index-vEynFqXR.js";import{t as i}from"
     width: 100px;
     height: 100px;
   }
-`,u=r.div`
+`,d=e.div`
   width: 130px;
   height: 130px;
   border-radius: 50%;
@@ -37,7 +37,7 @@ import{_ as e,f as t,v as n,y as r}from"./index-vEynFqXR.js";import{t as i}from"
     height: 100px;
     font-size: 2.75rem;
   }
-`,d=r.span`
+`,f=e.span`
   position: absolute;
   bottom: 8px;
   right: 8px;
@@ -54,20 +54,20 @@ import{_ as e,f as t,v as n,y as r}from"./index-vEynFqXR.js";import{t as i}from"
     bottom: 4px;
     right: 4px;
   }
-`,f=r.h1`
+`,p=e.h1`
   font-family: "JetBrains Mono", monospace;
   font-size: clamp(1.75rem, 5vw, 2.25rem);
   font-weight: 800;
   color: ${({theme:e})=>e.colors.text};
   margin: 0 0 0.5rem;
   letter-spacing: -1px;
-`,p=r.div`
+`,m=e.div`
   display: flex;
   justify-content: center;
   gap: 0.5rem;
   margin-bottom: 0.5rem;
   flex-wrap: wrap;
-`,m=r.span`
+`,h=e.span`
   padding: 0.35rem 0.85rem;
   border-radius: 50px;
   font-size: 0.82rem;
@@ -88,14 +88,14 @@ import{_ as e,f as t,v as n,y as r}from"./index-vEynFqXR.js";import{t as i}from"
           background: ${t.colors.primary}12;
           border-color: ${t.colors.primary}25;
         `}}}
-`,h=r.p`
+`,g=e.p`
   color: ${({theme:e})=>e.colors.muted};
   font-size: clamp(0.92rem, 2.5vw, 1.05rem);
   max-width: 520px;
   margin: 0 auto 0.5rem;
   line-height: 1.6;
   padding: 0 0.5rem;
-`,g=r.div`
+`,_=e.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,9 +103,9 @@ import{_ as e,f as t,v as n,y as r}from"./index-vEynFqXR.js";import{t as i}from"
   color: ${({theme:e})=>e.colors.muted};
   font-size: 0.88rem;
   margin-bottom: 0.5rem;
-`,_=r.section`
+`,v=e.section`
   margin-bottom: 0.5rem;
-`,v=r.h2`
+`,y=e.h2`
   font-size: 1.35rem;
   font-weight: 700;
   color: ${({theme:e})=>e.colors.text};
@@ -119,11 +119,11 @@ import{_ as e,f as t,v as n,y as r}from"./index-vEynFqXR.js";import{t as i}from"
   .accent {
     color: ${({theme:e})=>e.colors.primary};
   }
-`,y=r.div`
+`,b=e.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
-`,b=r.span`
+`,x=e.span`
   padding: 0.4rem 0.9rem;
   border-radius: 50px;
   font-size: 0.85rem;
@@ -138,12 +138,12 @@ import{_ as e,f as t,v as n,y as r}from"./index-vEynFqXR.js";import{t as i}from"
     background: ${({theme:e})=>e.colors.primary}20;
     border-color: ${({theme:e})=>e.colors.primary}40;
   }
-`,x=r.div`
+`,S=e.div`
   max-width: 700px;
   margin: 0 auto;
-`,S=r.p`
+`,C=e.p`
   color: ${({theme:e})=>e.colors.textSecondary};
   line-height: 1.8;
   font-size: 1rem;
   margin-bottom: 1rem;
-`,C=()=>(0,a.jsx)(i,{children:(0,a.jsxs)(s,{children:[(0,a.jsxs)(c,{children:[(0,a.jsxs)(l,{children:[(0,a.jsx)(u,{children:`A`}),(0,a.jsx)(d,{})]}),(0,a.jsx)(f,{children:`Anony`}),(0,a.jsxs)(p,{children:[(0,a.jsx)(m,{$variant:`green`,children:`<> Full Stack Developer`}),(0,a.jsx)(m,{$variant:`purple`,children:`> Cybersecurity Enthusiast`})]}),(0,a.jsx)(h,{children:`Passionate software developer crafting secure, scalable applications. Sharing knowledge through clean code and modern web technologies.`}),(0,a.jsxs)(g,{children:[(0,a.jsx)(t,{size:14}),`India`]})]}),(0,a.jsxs)(x,{children:[(0,a.jsxs)(_,{children:[(0,a.jsxs)(v,{children:[`About This `,(0,a.jsx)(`span`,{className:`accent`,children:`Blog`})]}),(0,a.jsx)(S,{children:`Welcome to my corner of the internet! I write about software engineering, clean code practices, and the tools and frameworks that power the modern web.`}),(0,a.jsx)(S,{children:`Whether you're a beginner looking for tutorials or an experienced developer exploring new patterns, you'll find something valuable here.`})]}),(0,a.jsxs)(_,{children:[(0,a.jsxs)(v,{children:[`Skills & `,(0,a.jsx)(`span`,{className:`accent`,children:`Technologies`})]}),(0,a.jsxs)(y,{children:[(0,a.jsx)(b,{children:`HTML`}),(0,a.jsx)(b,{children:`CSS / Styled Components`}),(0,a.jsx)(b,{children:`React`}),(0,a.jsx)(b,{children:`TypeScript`}),(0,a.jsx)(b,{children:`Node.js`}),(0,a.jsx)(b,{children:`Python`}),(0,a.jsx)(b,{children:`PostgreSQL`}),(0,a.jsx)(b,{children:`Git`}),(0,a.jsx)(b,{children:`REST APIs`}),(0,a.jsx)(b,{children:`Linux`})]})]}),(0,a.jsxs)(_,{children:[(0,a.jsxs)(v,{children:[`Get In `,(0,a.jsx)(`span`,{className:`accent`,children:`Touch`})]}),(0,a.jsx)(S,{children:`Have a question, suggestion, or just want to say hello? Feel free to reach out through the social links in the page rail or email me. I'd love to hear from you!`})]})]})]})});export{C as About};
+`,w=()=>(0,o.jsxs)(i,{children:[(0,o.jsx)(a,{title:`About | Anony.blog`,description:`Learn about Anony.blog and explore articles on software engineering, web development, and technology.`,path:`/about`}),(0,o.jsxs)(c,{children:[(0,o.jsxs)(l,{children:[(0,o.jsxs)(u,{children:[(0,o.jsx)(d,{children:`A`}),(0,o.jsx)(f,{})]}),(0,o.jsx)(p,{children:`Anony`}),(0,o.jsxs)(m,{children:[(0,o.jsx)(h,{$variant:`green`,children:`<> Full Stack Developer`}),(0,o.jsx)(h,{$variant:`purple`,children:`> Cybersecurity Enthusiast`})]}),(0,o.jsx)(g,{children:`Passionate software developer crafting secure, scalable applications. Sharing knowledge through clean code and modern web technologies.`}),(0,o.jsxs)(_,{children:[(0,o.jsx)(t,{size:14}),`India`]})]}),(0,o.jsxs)(S,{children:[(0,o.jsxs)(v,{children:[(0,o.jsxs)(y,{children:[`About This `,(0,o.jsx)(`span`,{className:`accent`,children:`Blog`})]}),(0,o.jsx)(C,{children:`Welcome to my corner of the internet! I write about software engineering, clean code practices, and the tools and frameworks that power the modern web.`}),(0,o.jsx)(C,{children:`Whether you're a beginner looking for tutorials or an experienced developer exploring new patterns, you'll find something valuable here.`})]}),(0,o.jsxs)(v,{children:[(0,o.jsxs)(y,{children:[`Skills & `,(0,o.jsx)(`span`,{className:`accent`,children:`Technologies`})]}),(0,o.jsxs)(b,{children:[(0,o.jsx)(x,{children:`HTML`}),(0,o.jsx)(x,{children:`CSS / Styled Components`}),(0,o.jsx)(x,{children:`React`}),(0,o.jsx)(x,{children:`TypeScript`}),(0,o.jsx)(x,{children:`Node.js`}),(0,o.jsx)(x,{children:`Python`}),(0,o.jsx)(x,{children:`PostgreSQL`}),(0,o.jsx)(x,{children:`Git`}),(0,o.jsx)(x,{children:`REST APIs`}),(0,o.jsx)(x,{children:`Linux`})]})]}),(0,o.jsxs)(v,{children:[(0,o.jsxs)(y,{children:[`Get In `,(0,o.jsx)(`span`,{className:`accent`,children:`Touch`})]}),(0,o.jsx)(C,{children:`Have a question, suggestion, or just want to say hello? Feel free to reach out through the social links in the page rail or email me. I'd love to hear from you!`})]})]})]})]});export{w as About};
