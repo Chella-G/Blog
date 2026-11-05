@@ -88,7 +88,7 @@ export const usePosts = (options?: UsePostsOptions) => {
           (p) =>
             p.title.toLowerCase().includes(q) ||
             p.excerpt.toLowerCase().includes(q) ||
-            p.tags.some((t) => t.toLowerCase() === options.tag!.toLowerCase()),
+            p.tags.some((t) => t.toLowerCase().includes(q)),
         );
       }
 
@@ -103,8 +103,13 @@ export const usePosts = (options?: UsePostsOptions) => {
 
       return () => clearTimeout(timer);
     } catch {
-      setError("Failed to load posts");
-      setLoading(false);
+      // Schedule through the same timer path as success to avoid cascading renders.
+      const timer = setTimeout(() => {
+        setError("Failed to load posts");
+        setLoading(false);
+      }, 150);
+
+      return () => clearTimeout(timer);
     }
   }, [options?.limit, options?.category, options?.tag, options?.search]);
 

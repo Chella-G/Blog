@@ -261,11 +261,9 @@ export const Header = () => {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Close drawer on path change and manage body scroll
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [location.pathname]);
-
+  // Manage body scroll lock while the drawer is open.
+  // Note: the drawer is closed in click handlers (links, logo, overlay, close button),
+  // so no path-change effect is needed.
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = "hidden";
@@ -286,7 +284,7 @@ export const Header = () => {
   return (
     <>
       <Nav>
-        <Logo to="/">
+        <Logo to="/" onClick={() => setMenuOpen(false)}>
           <LogoMark>A</LogoMark>
           Anony<span className="accent">.blog</span>
         </Logo>
