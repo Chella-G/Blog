@@ -1,4 +1,4 @@
-import{b as e,v as t}from"./index-CltCT092.js";var n=t(),r=e.div`
+import{b as e,v as t}from"./index-BxAJ3Clw.js";var n=t(),r=e.div`
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 1.5rem;
