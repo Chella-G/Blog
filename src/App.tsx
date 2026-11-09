@@ -9,12 +9,9 @@ import {
 import { ThemeProvider } from "./components/theme/ThemeProvider";
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
-import { SocialRail } from "./components/layout/SocialLinks";
 
-const Home = lazy(() => import("./pages/Home").then((m) => ({ default: m.Home })));
 const Blog = lazy(() => import("./pages/Blog").then((m) => ({ default: m.Blog })));
 const Post = lazy(() => import("./pages/Post").then((m) => ({ default: m.Post })));
-const About = lazy(() => import("./pages/About").then((m) => ({ default: m.About })));
 const Login = lazy(() => import("./pages/Login").then((m) => ({ default: m.Login })));
 const Register = lazy(() =>
   import("./pages/Register").then((m) => ({ default: m.Register })),
@@ -45,19 +42,19 @@ function App() {
           }}
         >
           <Header />
-          <SocialRail />
           <main style={{ flex: 1 }}>
             <Suspense fallback={null}>
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Blog />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:id" element={<Post />} />
               <Route path="/post/:id" element={<LegacyPostRedirect />} />
-              <Route path="/about" element={<About />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               {/* Handle any legacy /Blog prefix in dev gracefully */}
               <Route path="/Blog/*" element={<LegacyPrefixRedirect />} />
+              {/* Removed pages are placeholders for the blog home now */}
+              <Route path="/about" element={<Navigate to="/" replace />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
             </Suspense>

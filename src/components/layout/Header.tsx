@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { useTheme } from "../theme/ThemeProvider";
 import { FiSun, FiMoon, FiMenu, FiX } from "react-icons/fi";
 import { useState, useEffect } from "react";
@@ -9,7 +9,7 @@ const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.6rem 2.5rem;
+  padding: 0.75rem 2.5rem;
   font-family: ${({ theme }) => theme.fonts.base};
   background: ${({ theme }) => theme.gradients.navGlass};
   backdrop-filter: blur(20px) saturate(1.4);
@@ -17,8 +17,7 @@ const Nav = styled.nav`
   position: sticky;
   top: 0;
   z-index: 1000;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
-  transition: background 0.4s ease, border-color 0.4s ease;
+  transition: background 0.35s ease;
 
   @media (max-width: 768px) {
     padding: 0.6rem 1.25rem;
@@ -100,9 +99,8 @@ const NavCenter = styled.div<{ $isOpen: boolean }>`
     gap: 0.75rem;
     background: ${({ theme }) => theme.colors.background};
     border: none;
-    border-left: 1px solid ${({ theme }) => theme.colors.border};
     border-radius: 0;
-    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.35);
+    box-shadow: -12px 0 40px rgba(0, 0, 0, 0.28);
     transform: ${({ $isOpen }) =>
       $isOpen ? "translateX(0)" : "translateX(100%)"};
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -128,9 +126,8 @@ const DrawerHeader = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 1rem;
-    margin-bottom: 0.5rem;
-    border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
   }
 `;
 
@@ -160,37 +157,58 @@ const DrawerCloseBtn = styled.button`
   }
 `;
 
-const activeNavStyle = css`
-  background: ${({ theme }) => theme.colors.primary};
-  color: #fff;
-  box-shadow: 0 2px 8px hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.25);
-`;
-
 const NavLink = styled(Link)<{ $active?: boolean }>`
-  color: ${({ theme }) => theme.colors.textSecondary};
-  text-decoration: none;
-  font-weight: 500;
-  font-size: ${({ theme }) => theme.fontSizes.sm};
-  padding: 0.45rem 1rem;
-  border-radius: 50px;
-  transition: all 0.25s ease;
   position: relative;
+  color: ${({ theme, $active }) =>
+    $active ? theme.colors.text : theme.colors.textSecondary};
+  text-decoration: none;
+  font-weight: ${({ $active }) => ($active ? 600 : 500)};
+  font-size: ${({ theme }) => theme.fontSizes.sm};
+  padding: 0.35rem 0;
+  margin: 0 0.9rem;
+  border-radius: 0;
+  transition: color 0.2s ease;
 
-  ${({ $active }) => $active && activeNavStyle}
+  /* Slim underline marks the current page without adding visual weight. */
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.15rem;
+    height: 2px;
+    border-radius: 2px;
+    background: ${({ theme }) => theme.colors.primary};
+    transform: scaleX(${({ $active }) => ($active ? 1 : 0)});
+    transform-origin: center;
+    transition: transform 0.25s ease;
+  }
 
   &:hover {
-    color: ${({ theme, $active }) =>
-      $active ? "#fff" : theme.colors.text};
-    background: ${({ theme, $active }) =>
-      $active ? theme.colors.primary : theme.colors.surfaceHover};
+    color: ${({ theme }) => theme.colors.text};
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
   }
 
   @media (max-width: 768px) {
     width: 100%;
+    margin: 0;
     text-align: left;
-    padding: 0.85rem 1.25rem;
+    padding: 0.85rem 1rem;
     font-size: ${({ theme }) => theme.fontSizes.md};
-    border-radius: 12px;
+    border-radius: 10px;
+    background: ${({ theme, $active }) =>
+      $active ? theme.colors.surfaceHover : "transparent"};
+
+    &::after {
+      display: none;
+    }
+
+    &:hover {
+      background: ${({ theme }) => theme.colors.surfaceHover};
+    }
   }
 `;
 
@@ -200,20 +218,19 @@ const ThemeButton = styled.button`
   justify-content: center;
   width: 36px;
   height: 36px;
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: 50px;
-  background: ${({ theme }) => theme.colors.surface};
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: transparent;
   color: ${({ theme }) => theme.colors.textSecondary};
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   font-size: 1rem;
 
-  &:hover {
-    background: ${({ theme }) => theme.colors.primary};
-    border-color: ${({ theme }) => theme.colors.primary};
-    color: #fff;
-    transform: rotate(20deg);
-    box-shadow: ${({ theme }) => theme.shadows.glow};
+  &:hover,
+  &:focus-visible {
+    background: ${({ theme }) => theme.colors.surfaceHover};
+    border-color: ${({ theme }) => theme.colors.border};
+    color: ${({ theme }) => theme.colors.text};
   }
 `;
 
@@ -223,12 +240,19 @@ const MobileMenuBtn = styled.button`
   justify-content: center;
   width: 36px;
   height: 36px;
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: 50px;
+  border: 1px solid transparent;
+  border-radius: 50%;
   background: transparent;
   color: ${({ theme }) => theme.colors.text};
   cursor: pointer;
   font-size: 1.2rem;
+  transition: background 0.2s ease, border-color 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    background: ${({ theme }) => theme.colors.surfaceHover};
+    border-color: ${({ theme }) => theme.colors.border};
+  }
 
   @media (max-width: 768px) {
     display: flex;
@@ -276,10 +300,14 @@ export const Header = () => {
   }, [menuOpen]);
 
   const links = [
-    { to: "/", label: "Home", icon: "🏠" },
     { to: "/blog", label: "Blog", icon: "📝" },
-    { to: "/about", label: "About", icon: "👤" },
   ];
+
+  // The blog is the default page: highlight it on both "/" and "/blog".
+  const isActive = (to: string) =>
+    location.pathname === "/" ||
+    location.pathname === to ||
+    location.pathname.startsWith(`${to}/`);
 
   return (
     <>
@@ -300,7 +328,7 @@ export const Header = () => {
             <NavLink
               key={link.to}
               to={link.to}
-              $active={location.pathname === link.to}
+              $active={isActive(link.to)}
               onClick={() => setMenuOpen(false)}
             >
               {link.label}

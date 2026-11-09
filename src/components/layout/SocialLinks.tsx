@@ -1,19 +1,13 @@
 import styled from "styled-components";
 import { FiGithub, FiLinkedin, FiTwitter, FiMail } from "react-icons/fi";
 
-const LinkList = styled.div<{ $vertical: boolean; $responsive: boolean }>`
+const LinkList = styled.div`
   display: flex;
-  flex-direction: ${({ $vertical }) => ($vertical ? "column" : "row")};
   align-items: center;
   gap: 0.65rem;
 
   @media (max-width: 768px) {
-    ${({ $responsive }) =>
-      $responsive &&
-      `
-        flex-direction: row;
-        gap: 0.55rem;
-      `}
+    gap: 0.55rem;
   }
 `;
 
@@ -47,41 +41,8 @@ const SocialLink = styled.a`
   }
 `;
 
-const SocialRailFrame = styled.aside`
-  position: fixed;
-  top: 50%;
-  right: 1.25rem;
-  z-index: 900;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: translateY(-50%);
-
-  @media (max-width: 768px) {
-    position: relative;
-    top: auto;
-    right: auto;
-    width: fit-content;
-    margin: 0.5rem 0.85rem 0.25rem auto;
-    transform: none;
-  }
-`;
-
-interface SocialLinksProps {
-  vertical?: boolean;
-  responsive?: boolean;
-}
-
-export const SocialLinks = ({
-  vertical = false,
-  responsive = false,
-}: SocialLinksProps) => (
-  <LinkList
-    $vertical={vertical}
-    $responsive={responsive}
-    role="group"
-    aria-label="Social links"
-  >
+export const SocialLinks = () => (
+  <LinkList role="group" aria-label="Social links">
     <SocialLink
       href="https://github.com/Chella23"
       target="_blank"
@@ -113,10 +74,4 @@ export const SocialLinks = ({
       <FiMail />
     </SocialLink>
   </LinkList>
-);
-
-export const SocialRail = () => (
-  <SocialRailFrame aria-label="Connect with Anony">
-    <SocialLinks vertical responsive />
-  </SocialRailFrame>
 );

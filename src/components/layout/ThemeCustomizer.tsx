@@ -22,19 +22,19 @@ const Trigger = styled.button`
   justify-content: center;
   width: 36px;
   height: 36px;
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: 50px;
-  background: ${({ theme }) => theme.colors.surface};
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: transparent;
   color: ${({ theme }) => theme.colors.textSecondary};
   cursor: pointer;
   font-size: 1rem;
-  transition: all 0.25s ease;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 
-  &:hover {
-    background: ${({ theme }) => theme.colors.primary};
-    border-color: ${({ theme }) => theme.colors.primary};
-    color: #fff;
-    box-shadow: ${({ theme }) => theme.shadows.glow};
+  &:hover,
+  &:focus-visible {
+    background: ${({ theme }) => theme.colors.surfaceHover};
+    border-color: ${({ theme }) => theme.colors.border};
+    color: ${({ theme }) => theme.colors.text};
   }
 `;
 
