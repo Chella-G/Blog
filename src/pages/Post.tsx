@@ -4,6 +4,7 @@ import { usePost } from "../hooks/usePosts";
 import { PostDetail } from "../components/post/PostDetail";
 import { FiArrowLeft } from "react-icons/fi";
 import { SEO } from "../components/layout/SEO";
+import { paths } from "../routes";
 
 const spin = keyframes`
   to { transform: rotate(360deg); }
@@ -85,8 +86,8 @@ const BackBar = styled.div`
 `;
 
 export const Post = () => {
-  const { id } = useParams<{ id: string }>();
-  const { data: post, loading, error } = usePost(id || "");
+  const { slug } = useParams<{ slug: string }>();
+  const { data: post, loading, error } = usePost(slug ?? "");
 
   if (loading) {
     return (
@@ -104,7 +105,7 @@ export const Post = () => {
         <ErrorMsg>
           The article you're looking for doesn't exist or has been removed.
         </ErrorMsg>
-        <BackLink to="/blog">
+        <BackLink to={paths.home}>
           <FiArrowLeft /> Back to Blog
         </BackLink>
       </ErrorWrapper>
@@ -116,7 +117,7 @@ export const Post = () => {
       <SEO
         title={`${post.title} | Anony.blog`}
         description={post.excerpt || `Read ${post.title}, a practical guide by ${post.author.name}.`}
-        path={`/blog/${post.slug || post.id}`}
+        path={paths.post(post.slug || post.id)}
         image={post.thumbnail || undefined}
         type="article"
         publishedAt={post.publishedAt}
@@ -124,7 +125,7 @@ export const Post = () => {
         tags={post.tags.filter(Boolean)}
       />
       <BackBar>
-        <BackLink to="/blog">
+        <BackLink to={paths.home}>
           <FiArrowLeft /> All Posts
         </BackLink>
       </BackBar>

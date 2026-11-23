@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Post } from "../../hooks/usePosts";
 import { formatDate } from "../../utils/formatDate";
+import { paths } from "../../routes";
 
 const Item = styled.article`
   padding: 1.35rem 0;
@@ -58,7 +59,7 @@ interface PostCardProps {
 
 export const PostCard = ({ post }: PostCardProps) => (
   <Item>
-    <ItemLink to={`/blog/${post.slug || post.id}`}>
+    <ItemLink to={paths.post(post.slug || post.id)}>
       <DateLine>{formatDate(post.publishedAt)}</DateLine>
       <Title>{post.title}</Title>
       {post.excerpt && <Excerpt>{post.excerpt}</Excerpt>}

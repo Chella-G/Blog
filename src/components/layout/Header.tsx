@@ -4,6 +4,7 @@ import { useTheme } from "../theme/ThemeProvider";
 import { FiSun, FiMoon, FiMenu, FiX } from "react-icons/fi";
 import { useState, useEffect } from "react";
 import { ThemeCustomizer } from "./ThemeCustomizer";
+import { paths } from "../../routes";
 
 const Nav = styled.nav`
   display: flex;
@@ -299,20 +300,23 @@ export const Header = () => {
     };
   }, [menuOpen]);
 
-  const links = [
-    { to: "/blog", label: "Blog", icon: "📝" },
-  ];
+  const links = [{ to: paths.home, label: "Blog" }];
 
-  // The blog is the default page: highlight it on both "/" and "/blog".
-  const isActive = (to: string) =>
-    location.pathname === "/" ||
-    location.pathname === to ||
-    location.pathname.startsWith(`${to}/`);
+  // Blog is the home page, so keep it highlighted while reading a post too.
+  const isActive = (to: string) => {
+    if (to === paths.home) {
+      return (
+        location.pathname === paths.home ||
+        location.pathname.startsWith(`${paths.postBase}/`)
+      );
+    }
+    return location.pathname === to;
+  };
 
   return (
     <>
       <Nav>
-        <Logo to="/" onClick={() => setMenuOpen(false)}>
+        <Logo to={paths.home} onClick={() => setMenuOpen(false)}>
           <LogoMark>A</LogoMark>
           Anony<span className="accent">.blog</span>
         </Logo>
@@ -335,8 +339,8 @@ export const Header = () => {
             </NavLink>
           ))}
           <NavLink
-            to="/login"
-            $active={location.pathname === "/login"}
+            to={paths.login}
+            $active={location.pathname === paths.login}
             onClick={() => setMenuOpen(false)}
           >
             Login

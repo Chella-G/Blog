@@ -2,9 +2,9 @@
 
   {
     "id": "1",
-    "slug": "veyon-classroom-management-setup-guide",
+    "slug": "veyon",
     "file": "veyon.md",
-    "title": "Veyon Classroom Management: Setup Guide",
+    "title": "Veyon Software: Setup Guide",
     "excerpt": "Learn how to install and configure Veyon for classroom computer management, including authentication, client setup, locations, and Wake-on-LAN.",
     "author": {
       "name": "Anony",
@@ -15,6 +15,7 @@
       "Veyon",
       "classroom-management",
       "Windows"
+      
     ],
     "category": "Tutorials",
     "thumbnail": "",

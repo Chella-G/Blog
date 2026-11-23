@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Container } from "../components/layout/Container";
 import { FiUser, FiMail, FiLock, FiArrowRight } from "react-icons/fi";
+import { paths } from "../routes";
 
 const fadeUp = keyframes`
   from { opacity: 0; transform: translateY(20px); }
@@ -232,7 +233,7 @@ export const Register = () => {
             </SubmitBtn>
           </Form>
           <BottomText>
-            Already have an account? <Link to="/login">Sign in</Link>
+            Already have an account? <Link to={paths.login}>Sign in</Link>
           </BottomText>
         </Card>
       </Wrapper>

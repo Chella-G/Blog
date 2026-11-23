@@ -1,14 +1,9 @@
 import { lazy, Suspense } from "react";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate,
-  useLocation,
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "./components/theme/ThemeProvider";
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
+import { paths } from "./routes";
 
 const Blog = lazy(() => import("./pages/Blog").then((m) => ({ default: m.Blog })));
 const Post = lazy(() => import("./pages/Post").then((m) => ({ default: m.Post })));
@@ -16,19 +11,9 @@ const Login = lazy(() => import("./pages/Login").then((m) => ({ default: m.Login
 const Register = lazy(() =>
   import("./pages/Register").then((m) => ({ default: m.Register })),
 );
-const LegacyPostRedirect = () => {
-  const location = useLocation();
-  const id = location.pathname.split("/").filter(Boolean).at(-1);
-  return <Navigate to={`/blog/${id || ""}${location.search}${location.hash}`} replace />;
-};
-
-const LegacyPrefixRedirect = () => {
-  const location = useLocation();
-  const cleanPath = location.pathname.replace(/^\/Blog/, "") || "/";
-  return (
-    <Navigate to={`${cleanPath}${location.search}${location.hash}`} replace />
-  );
-};
+const NotFound = lazy(() =>
+  import("./pages/NotFound").then((m) => ({ default: m.NotFound })),
+);
 
 function App() {
   return (
@@ -44,19 +29,13 @@ function App() {
           <Header />
           <main style={{ flex: 1 }}>
             <Suspense fallback={null}>
-            <Routes>
-              <Route path="/" element={<Blog />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:id" element={<Post />} />
-              <Route path="/post/:id" element={<LegacyPostRedirect />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              {/* Handle any legacy /Blog prefix in dev gracefully */}
-              <Route path="/Blog/*" element={<LegacyPrefixRedirect />} />
-              {/* Removed pages are placeholders for the blog home now */}
-              <Route path="/about" element={<Navigate to="/" replace />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
+              <Routes>
+                <Route path={paths.home} element={<Blog />} />
+                <Route path={`${paths.postBase}/:slug`} element={<Post />} />
+                <Route path={paths.login} element={<Login />} />
+                <Route path={paths.register} element={<Register />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
             </Suspense>
           </main>
           <Footer />
